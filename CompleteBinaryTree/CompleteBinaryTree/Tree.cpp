@@ -1,36 +1,50 @@
 #include "Tree.h"
 
-Tree::Tree() :currentIndex(0), root(nullptr), indexArray(nullptr) 
-{
-	indexArray = (Node **)malloc(sizeof(Node*) * ALLOCSIZE);
-	memset(indexArray, 0, sizeof(indexArray));
-}
+Tree::Tree() :arraySize(0), currentIndex(0), root(nullptr), indexArray(nullptr) {}
 
 Tree::~Tree()
 {
 	if (root != nullptr)
 	{
-		for (size_t index = currentIndex; index > 0; index--)
-			free(&indexArray[index]);
+		for (size_t index = currentIndex-1; index > 0; index--)
+			delete indexArray[index];
+		delete[] indexArray;
 	}
 
-	free(indexArray);
 }
 
 bool Tree::isEmpty() { return root == nullptr; }
+
+void Tree::reConstructTree()
+{
+	for (int index = currentIndex-1; index > 0; index--)
+	{
+		if ((index + 1) % 2 == 0)									//if New Node is left Child Node 
+			indexArray[((index + 1) / 2) - 1]->_SetLeftNode(indexArray[index]);
+		else														//if New Node is right Child Node
+			indexArray[((index + 1) / 2) - 1]->_SetRightNode(indexArray[index]);
+	}
+	root = indexArray[0];
+}
 
 void Tree::Push(int value)
 {
 	if ((currentIndex % ALLOCSIZE == 0) || indexArray == nullptr)
 	{
-		size_t currentSize = sizeof(indexArray) / sizeof(indexArray[0]);
 
-		Node** tempArray = (Node**)malloc(sizeof(Node*)*currentSize + ALLOCSIZE);
-		memset(tempArray, 0, sizeof(tempArray));
-		memcpy(tempArray, indexArray, sizeof(indexArray));
-		free(indexArray);
+		Node** tempArray = new Node*[arraySize + ALLOCSIZE];
+		arraySize += ALLOCSIZE;
+		memset(tempArray, 0, arraySize * sizeof(Node*));
 
-		indexArray = tempArray;
+		if (indexArray != nullptr)
+		{
+			memcpy(tempArray, indexArray, (arraySize - ALLOCSIZE) * sizeof(Node*));
+			delete[] indexArray;
+			indexArray = tempArray;
+			reConstructTree();
+		}
+		else
+			indexArray = tempArray;
 	}
 
 
@@ -46,10 +60,10 @@ void Tree::Push(int value)
 		return;
 	}
 
-	if (currentIndex % 2 == 1)	//if New Node is left Child Node 
-		indexArray[currentIndex % 2]->_SetLeftNode(newNode);
-	else						//if New Node is right Child Node
-		indexArray[currentIndex % 2]->_SetRightNode(newNode);
+	if ((currentIndex + 1) % 2 == 0)	//if New Node is left Child Node 
+		indexArray[((currentIndex +1) / 2) - 1]->_SetLeftNode(newNode);
+	else								//if New Node is right Child Node
+		indexArray[((currentIndex +1) / 2) - 1]->_SetRightNode(newNode);
 
 	currentIndex += 1;
 }
@@ -60,23 +74,24 @@ void Tree::Pop()
 
 	if (currentIndex == 0)
 	{
-		free(indexArray[currentIndex]);
-		free(indexArray);
+		delete indexArray[currentIndex];
+		delete[] indexArray;
 		indexArray = nullptr;
 		root = nullptr;
-
 		return;
 	}
 
-	free(indexArray[currentIndex]);
+	delete indexArray[currentIndex];
 	currentIndex--;
 
 	if (!(currentIndex%ALLOCSIZE))
 	{
-		size_t currentSize = sizeof(indexArray) / sizeof(indexArray[0]);
 
-		Node** tempArray = (Node**)malloc(sizeof(Node*)*currentSize - ALLOCSIZE);
-		memset(tempArray, 0, sizeof(tempArray));
-		memcpy(tempArray, indexArray, sizeof(indexArray));
+		Node** tempArray = new Node*[arraySize - ALLOCSIZE];
+		arraySize -= ALLOCSIZE;
+		memset(tempArray, 0, arraySize * sizeof(Node*));
+		memcpy(tempArray, indexArray, arraySize * sizeof(Node*));
+		reConstructTree();
+		root = tempArray[0];
 	}
 }
