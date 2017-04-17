@@ -1,8 +1,9 @@
 #pragma once
-#include<malloc.h>
+#include<stdlib.h>
+#include<memory>
 #include"Node.h"
 
-#define		ALLOCSIZE		12
+#define		ALLOCSIZE		6
 
 class Tree
 {
@@ -14,29 +15,15 @@ private:
 public:
 	Tree();
 	~Tree();
+	bool isEmpty();
 	void Push(int value);
+	void Pop();
+	void sort();
+	void Search();
+	void print()
+	{
+		for (int i = 0; i < currentIndex; i++)
+			printf("%d ", indexArray[i]->_GetValue());
+	}
 };
 
-Tree::Tree() :currentIndex(0), root(nullptr), indexArray(nullptr)
-{
-	indexArray = (Node **)malloc(sizeof(Node*) * ALLOCSIZE);
-}
-
-Tree::~Tree() 
-{
-	if (root != nullptr)
-	{
-		for (size_t index = currentIndex; index > 0; index--)
-			free(&indexArray[index]);
-	}
-
-	free(indexArray); 
-}
-
-void Tree::Push(int value)
-{
-	if (currentIndex != 0 || !(currentIndex + 1) % ALLOCSIZE)
-	{
-
-	}
-}
