@@ -52,4 +52,6 @@ void main()
 	t.print();
 	t.Pop();
 	t.print();
+	t.Pop();
+	t.print();
 }

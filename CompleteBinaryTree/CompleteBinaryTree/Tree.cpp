@@ -29,15 +29,15 @@ void Tree::reConstructTree()
 
 void Tree::Push(int value)
 {
+	//if is has not enough Memory reallocate Memory more
 	if ((currentIndex % ALLOCSIZE == 0) || indexArray == nullptr)
 	{
-
 		Node** tempArray = new Node*[arraySize + ALLOCSIZE];
 		arraySize += ALLOCSIZE;
 		memset(tempArray, 0, arraySize * sizeof(Node*));
 
-		if (indexArray != nullptr)
-		{
+		if (indexArray != nullptr)			//if it already has array, copy data in original array
+		{									//to new array
 			memcpy(tempArray, indexArray, (arraySize - ALLOCSIZE) * sizeof(Node*));
 			delete[] indexArray;
 			indexArray = tempArray;
@@ -72,6 +72,16 @@ void Tree::Pop()
 {
 	if (isEmpty()) return;
 
+	//pop last Node
+	delete indexArray[currentIndex];
+	if ((currentIndex + 1) % 2 == 0)	//if pop Node is left Child Node 
+		indexArray[((currentIndex + 1) / 2) - 1]->_SetLeftNode(nullptr);
+	else								//if pop Node is right Child Node
+		indexArray[((currentIndex + 1) / 2) - 1]->_SetRightNode(nullptr);
+	
+	currentIndex--;
+
+	//if Final node is deleted, initialize all variables
 	if (currentIndex == 0)
 	{
 		delete indexArray[currentIndex];
@@ -81,12 +91,10 @@ void Tree::Pop()
 		return;
 	}
 
-	delete indexArray[currentIndex];
-	currentIndex--;
-
-	if (!(currentIndex%ALLOCSIZE))
+	//Memoey Reallocate
+	if (!(currentIndex%ALLOCSIZE))			
 	{
-
+		if (currentIndex == 0) return;
 		Node** tempArray = new Node*[arraySize - ALLOCSIZE];
 		arraySize -= ALLOCSIZE;
 		memset(tempArray, 0, arraySize * sizeof(Node*));
@@ -94,4 +102,12 @@ void Tree::Pop()
 		reConstructTree();
 		root = tempArray[0];
 	}
+}
+
+bool Tree::Search(int value)
+{
+	for (int i = 0; i < currentIndex; i++)
+		if (indexArray[i]->_GetValue() == value)
+			return true;
+	return false;
 }
