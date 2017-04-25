@@ -1,9 +1,9 @@
 #pragma once
-#include<stdlib.h>
-#include<memory>
-#include"Node.h"
 
 #define		ALLOCSIZE		6
+
+
+class Node;
 
 class Tree
 {
@@ -16,17 +16,11 @@ private:
 public:
 	Tree();
 	~Tree();
-	bool isEmpty();
+	bool isEmpty() const;
 	void reConstructTree();
-	void Push(int value);
+	void Push(const int value);
 	void Pop();
-	void sort();
-	void Search();
-	void print()
-	{
-		for (int i = 0; i < currentIndex; i++)
-			printf("%d ", indexArray[i]->_GetValue());
-		printf("\n");
-	}
+	Node* Search(const int value) const;
+	void print() const;
 };
 

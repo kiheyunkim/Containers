@@ -1,3 +1,5 @@
+#include<iostream>
+#include"Node.h"
 #include "Tree.h"
 
 Tree::Tree() :arraySize(0), currentIndex(0), root(nullptr), indexArray(nullptr) {}
@@ -13,7 +15,7 @@ Tree::~Tree()
 
 }
 
-bool Tree::isEmpty() { return root == nullptr; }
+bool Tree::isEmpty() const { return root == nullptr; }
 
 void Tree::reConstructTree()
 {
@@ -27,7 +29,7 @@ void Tree::reConstructTree()
 	root = indexArray[0];
 }
 
-void Tree::Push(int value)
+void Tree::Push(const int value)
 {
 	if ((currentIndex % ALLOCSIZE == 0) || indexArray == nullptr)
 	{
@@ -94,4 +96,19 @@ void Tree::Pop()
 		reConstructTree();
 		root = tempArray[0];
 	}
+}
+
+Node* Tree::Search(const int val) const
+{
+	for (size_t index = 0; index < (size_t)currentIndex - 1; index++)
+		if(indexArray[index]->_GetValue()==val)
+			return indexArray[index];
+	return NULL;
+}
+
+void Tree::print() const
+{
+	for (size_t index = 0; index < (size_t)currentIndex - 1; index++)
+		std::cout << indexArray[index]->_GetValue() << " ";
+	std::cout<<std::endl;
 }
