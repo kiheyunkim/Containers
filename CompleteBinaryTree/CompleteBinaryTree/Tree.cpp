@@ -1,12 +1,23 @@
 #include "Tree.h"
 
 Tree::Tree() :arraySize(0), currentIndex(0), root(nullptr), indexArray(nullptr) {}
+Tree::Tree(Tree& tree) : arraySize(0), currentIndex(0), root(nullptr), indexArray(nullptr)
+{
+	arraySize = tree.arraySize;
+	currentIndex = tree.currentIndex;
+
+	Node** tempArray = new Node*[arraySize];
+	memset(tempArray, 0, arraySize * sizeof(Node*));
+	memcpy(tempArray, indexArray, arraySize * sizeof(Node*));
+	
+	root = tempArray[0];
+}
 
 Tree::~Tree()
 {
 	if (root != nullptr)
 	{
-		for (size_t index = currentIndex-1; index > 0; index--)
+		for (size_t index = currentIndex - 1; index > 0; index--)
 			delete indexArray[index];
 		delete[] indexArray;
 	}
@@ -110,4 +121,24 @@ bool Tree::Search(int value)
 		if (indexArray[i]->_GetValue() == value)
 			return true;
 	return false;
+}
+
+void Tree::operator=(Tree tree)
+{
+	//delete all Existing datas
+	if (root != nullptr)
+	{
+		for (size_t index = currentIndex - 1; index > 0; index--)
+			delete indexArray[index];
+		delete[] indexArray;
+	}
+
+	arraySize = tree.arraySize;
+	currentIndex = tree.currentIndex;
+
+	Node** tempArray = new Node*[arraySize];
+	memset(tempArray, 0, arraySize * sizeof(Node*));
+	memcpy(tempArray, indexArray, arraySize * sizeof(Node*));
+
+	root = tempArray[0];
 }

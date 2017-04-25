@@ -28,30 +28,7 @@ void main()
 	t.print();
 	t.Push(13);
 	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
-	t.Pop();
-	t.print();
+
+	Tree t2(t);
+	t2.print();
 }

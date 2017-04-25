@@ -15,6 +15,7 @@ private:
 
 public:
 	Tree();
+	Tree(Tree& tree);
 	~Tree();
 	bool isEmpty();
 	void reConstructTree();
@@ -27,5 +28,6 @@ public:
 			printf("%d ", indexArray[i]->_GetValue());
 		printf("\n");
 	}
+	void operator=(Tree tree);
 };
 
