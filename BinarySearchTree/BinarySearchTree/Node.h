@@ -8,17 +8,16 @@ class Node
 public:
 	Node();
 	~Node();
-	int _GetValue();
-	int* _GetAddr();
-	Node* _GetLeftNode();
-	Node* _GetRightNode();
-	void _SetValue(int value);
+	int _GetValue() const;
+	Node* _GetLeftNode() const;
+	Node* _GetRightNode() const;
+	void _SetValue(const int value);
 	void _SetLeftNode(Node* node);
 	void _SetRightNode(Node* node);
 
 public:
-	void operator=(Node node);
-	bool operator==(Node node);
-	bool operator!=(Node node);
+	void operator=(const Node node);
+	bool operator==(const Node node);
+	bool operator!=(const Node node);
 };
 
