@@ -29,6 +29,8 @@ void main()
 	t.Push(13);
 	t.print();
 
-	Tree t2(t);
+	Tree t2 = t;
 	t2.print();
+	t.print();
+
 }

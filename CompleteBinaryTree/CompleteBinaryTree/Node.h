@@ -7,6 +7,7 @@ class Node
 
 public:
 	Node();
+	Node(Node& node);
 	~Node();
 	int _GetValue();
 	int* _GetAddr();

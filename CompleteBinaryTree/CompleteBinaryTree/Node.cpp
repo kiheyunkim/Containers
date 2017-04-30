@@ -4,6 +4,12 @@
 
 
 Node::Node() :_value(0), _leftNode(nullptr), _rightNode(nullptr) {}
+Node::Node(Node& node)
+{
+	_value = node._value;
+	_leftNode = node._leftNode;
+	_rightNode = node._rightNode;
+}
 Node::~Node() {}
 
 int Node::_GetValue() { return _value; }

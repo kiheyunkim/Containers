@@ -1,6 +1,7 @@
 #include "Tree.h"
 
 Tree::Tree() :arraySize(0), currentIndex(0), root(nullptr), indexArray(nullptr) {}
+
 Tree::Tree(Tree& tree) : arraySize(0), currentIndex(0), root(nullptr), indexArray(nullptr)
 {
 	arraySize = tree.arraySize;
@@ -8,9 +9,13 @@ Tree::Tree(Tree& tree) : arraySize(0), currentIndex(0), root(nullptr), indexArra
 
 	Node** tempArray = new Node*[arraySize];
 	memset(tempArray, 0, arraySize * sizeof(Node*));
-	memcpy(tempArray, indexArray, arraySize * sizeof(Node*));
-	
+	indexArray = tempArray;
+
+	for (int i = 0; i < currentIndex; i++)
+		tempArray[i] = new Node(*tree.indexArray[i]);
+
 	root = tempArray[0];
+	reConstructTree();
 }
 
 Tree::~Tree()
@@ -21,7 +26,6 @@ Tree::~Tree()
 			delete indexArray[index];
 		delete[] indexArray;
 	}
-
 }
 
 bool Tree::isEmpty() { return root == nullptr; }
@@ -92,7 +96,7 @@ void Tree::Pop()
 	
 	currentIndex--;
 
-	//if Final node is deleted, initialize all variables
+	//if final node is deleted, initialize all variables
 	if (currentIndex == 0)
 	{
 		delete indexArray[currentIndex];
@@ -102,7 +106,7 @@ void Tree::Pop()
 		return;
 	}
 
-	//Memoey Reallocate
+	//Memoey Re-Allocate
 	if (!(currentIndex%ALLOCSIZE))			
 	{
 		if (currentIndex == 0) return;
@@ -138,7 +142,11 @@ void Tree::operator=(Tree tree)
 
 	Node** tempArray = new Node*[arraySize];
 	memset(tempArray, 0, arraySize * sizeof(Node*));
-	memcpy(tempArray, indexArray, arraySize * sizeof(Node*));
+	indexArray = tempArray;
+
+	for (int i = 0; i < currentIndex; i++)
+		tempArray[i] = new Node(*tree.indexArray[i]);
 
 	root = tempArray[0];
+	reConstructTree();
 }
