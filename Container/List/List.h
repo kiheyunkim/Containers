@@ -58,7 +58,7 @@ public:
 
 	//Operations
 	void splice(Iterator iter, List *list);
-	void remove(int val);
+	void remove(const int val);
 	void remove_if(bool(*compare)(const int&));
 	void unique();
 	void merge(List list);

@@ -28,7 +28,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -148,11 +148,13 @@
   <ItemGroup>
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Reverse_Iterator.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Iterator.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Reverse_Iterator.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="소스.cpp" />
   </ItemGroup>
