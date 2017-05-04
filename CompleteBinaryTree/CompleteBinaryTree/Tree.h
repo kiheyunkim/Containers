@@ -17,17 +17,17 @@ public:
 	Tree();
 	Tree(Tree& tree);
 	~Tree();
-	bool isEmpty();
+	bool isEmpty() const;
 	void reConstructTree();
-	void Push(int value);
+	void Push(const int value);
 	void Pop();
-	bool Search(int val);
+	bool Search(const int val);
 	void print()
 	{
 		for (int i = 0; i < currentIndex; i++)
 			printf("%d ", indexArray[i]->_GetValue());
 		printf("\n");
 	}
-	void operator=(Tree tree);
+	void operator=(const Tree tree);
 };
 

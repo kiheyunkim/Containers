@@ -28,7 +28,7 @@ Tree::~Tree()
 	}
 }
 
-bool Tree::isEmpty() { return root == nullptr; }
+bool Tree::isEmpty() const { return root == nullptr; }
 
 void Tree::reConstructTree()
 {
@@ -42,7 +42,7 @@ void Tree::reConstructTree()
 	root = indexArray[0];
 }
 
-void Tree::Push(int value)
+void Tree::Push(const int value)
 {
 	//if is has not enough Memory reallocate Memory more
 	if ((currentIndex % ALLOCSIZE == 0) || indexArray == nullptr)
@@ -119,7 +119,7 @@ void Tree::Pop()
 	}
 }
 
-bool Tree::Search(int value)
+bool Tree::Search(const int value)
 {
 	for (int i = 0; i < currentIndex; i++)
 		if (indexArray[i]->_GetValue() == value)
@@ -127,7 +127,7 @@ bool Tree::Search(int value)
 	return false;
 }
 
-void Tree::operator=(Tree tree)
+void Tree::operator=(const Tree tree)
 {
 	//delete all Existing datas
 	if (root != nullptr)
