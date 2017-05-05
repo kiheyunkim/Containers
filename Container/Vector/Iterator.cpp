@@ -1,27 +1,21 @@
 #include "Iterator.h"
 
-Iterator::Iterator()
-{
-	target = nullptr;
-}
+Iterator::Iterator() :_target(nullptr) {}
 
-Iterator::Iterator(Node *node)
-{
-	target = node;
-}
+Iterator::Iterator(Node *node) : _target(node) {}
 
 Iterator Iterator::operator++(int)
 {
-	target = target->_GetNextNode();
+	_target++;
 	return *this;
-}
+}	
 
 Iterator Iterator::operator+(int count)
 {
 	for (int i = 0; i < count; i++)
 	{
-		if (target != nullptr)
-			target = target->_GetNextNode();
+		if (_target != nullptr)
+			_target++;
 	}
 	return *this;
 }
@@ -30,57 +24,48 @@ Iterator Iterator::operator+=(int count)
 {
 	for (int i = 0; i < count; i++)
 	{
-		if (target != nullptr)
-			target = target->_GetNextNode(); 
+		if (_target != nullptr)
+			_target++;
 	}
 	return *this;
 }
 
 Iterator Iterator::operator--()
 {
-	target = target->_GetPrevNode();
+	_target--;
 	return *this;
 }
 
 Iterator Iterator::operator-(int count)
 {
 	for (int i = 0; i < count; i++)
-		if (target != nullptr)
-			target=target->_GetPrevNode();
+		if (_target != nullptr)
+			_target--;
 	return *this;
 }
 
 Iterator Iterator::operator-=(int count)
 {
 	for (int i = 0; i < count; i++)
-		if (target != nullptr)
-			target = target->_GetPrevNode();
+		if (_target != nullptr)
+			_target--;
 	return *this;
 }
 
 int Iterator::operator[](int index)
 {
 	for (int i = 0; i < index; i++)
-		target = target->_GetNextNode();
-	return target->_GetValue();
+		_target--;
+	return _target->_GetValue();
 }
 
-void Iterator::operator=(Node *node)
-{
-	target = node;
-}
+void Iterator::operator=(Iterator iter) { _target = iter._target; }
 
-bool Iterator::operator!=(Node *iter)
-{
-	return target != iter;
-}
+bool Iterator::operator!=(Iterator iter) { return _target != iter._target; }
 
-bool Iterator::operator==(Node *iter)
-{
-	return target == iter;
-}
+bool Iterator::operator==(Iterator iter) { return _target == iter._target; }
 
 int Iterator::operator*()
 {
-	return target->_GetValue();
+	return _target->_GetValue();
 }

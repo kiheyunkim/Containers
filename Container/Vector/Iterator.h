@@ -4,13 +4,16 @@
 class Iterator
 {
 private:
-	Node *target;
+	Node *_target;
+
 public:
-	Node* _GetNode() { return target; }
+	Node* _GetNode() { return _target; }
+
 public:
 	Iterator();
 	Iterator(Node *node);
 	~Iterator() {}
+
 	Iterator operator++(int);
 	Iterator operator+(int count);
 	Iterator operator+=(int count);
@@ -18,19 +21,19 @@ public:
 	Iterator operator-(int count);
 	Iterator operator-=(int count);
 	int operator[](int index);
-	void operator=(Node *node);
-	bool operator==(Node *node);
-	bool operator!=(Node *node);
+	void operator=(Iterator node);
+	bool operator==(Iterator node);
+	bool operator!=(Iterator node);
 	int operator*();
 	friend std::ostream& operator<<(std::ostream& os, const Iterator& iter)
 	{
-		int value = iter.target->_GetValue();
+		int value = iter._target->_GetValue();
 		os << value;
 		return os;
 	}
 	friend std::istream& operator >> (std::istream& is, const Iterator& iter)
 	{
-		int value = iter.target->_GetValue();
+		int value = iter._target->_GetValue();
 		is >> value;
 		return is;
 	}
