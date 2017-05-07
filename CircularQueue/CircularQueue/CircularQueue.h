@@ -10,7 +10,7 @@ public:
 	typedef T valueType;
 
 private:
-	T queueArray[MAX_LENGTH];
+	T _queueArray[MAX_LENGTH];
 	int _headIndex;
 	int _rearIndex;
 
@@ -19,8 +19,6 @@ public:
 	~CircularQueue();
 
 public:
-	int _GetHead();
-	int _GetRear();
 	bool Push(T data);
 	bool Pop();
 	bool isEmpty();
@@ -28,37 +26,27 @@ public:
 #ifdef  _DEBUG
 	void print()
 	{
-		for (int i = _headIndex;i!=_rearIndex;)
+		for (int i = _headIndex; i != _rearIndex;)
 		{
-			printf("Index:%d : %d, ", i, queueArray[i]);
+			printf("Index:%d : %d, ", i, _queueArray[i]);
 			i = ((i + 1) % MAX_LENGTH == 0) ? 0 : ++i;
 		}
 		printf("\n");
 	}
 #endif //  DEBUG
-	
 };
 
 template<class T>
-CircularQueue<T>::CircularQueue() :_headIndex(0), _rearIndex(0)
-{
-	memset(queueArray, 0, sizeof(queueArray));
-}
+CircularQueue<T>::CircularQueue() :_headIndex(0), _rearIndex(0) { memset(_queueArray, 0, sizeof(_queueArray)); }
 
 template<class T>
 CircularQueue<T>::~CircularQueue() {}
 
 template<class T>
-int CircularQueue<T>::_GetHead() { return _headIndex; }
-
-template<class T>
-int CircularQueue<T>::_GetRear() { return _rearIndex; }
-
-template<class T>
 bool CircularQueue<T>::Push(T data)
 {
 	if ((_rearIndex + 1) % MAX_LENGTH == _headIndex) return false;
-	memcpy(&queueArray[_rearIndex], &data, sizeof(data));
+	memcpy(&_queueArray[_rearIndex], &data, sizeof(data));
 	_rearIndex = (_rearIndex + 1 == MAX_LENGTH) ? 0 : ++_rearIndex;
 
 	return true;
