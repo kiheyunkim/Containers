@@ -41,7 +41,8 @@ Reverse_Iterator::value_type* Reverse_Iterator::operator&() const
 {
 	//if (_target->_GetPrevNode() == nullptr)
 	//	std::_Debug_message(_T("Pit pf Range"), _T("Reverse_Iterator.cpp"), 57);
-	return _target->_GetAddr(); 
+	//return _target->_GetAddr(); 
+	return NULL;
 }
 
 Node* Reverse_Iterator::operator->() const { return _target; }

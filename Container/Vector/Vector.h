@@ -8,18 +8,17 @@
 class Vector
 {
 private:
-	Node* _head;
-	Node* _tail;
-	size_t _arraySize;
 	Node** _dataArray;
-	int _currentIndex;
 
 private:
-	void _constructArray();
+	unsigned int _headIndex;
+	unsigned int _tailIndex;
+	size_t _arraySize;
 
 public:
 	typedef Iterator Iterator;
 	typedef Reverse_Iterator Reverse_Iterator;
+	typedef int& reference;
 
 public:
 	Vector();
@@ -39,14 +38,21 @@ public:
 	void resize();
 	size_t capacity() const;
 	bool Empty() const;
-	void Reverse();
+	void Reserve();
 	void ShrinkToFit();
 
-	void operator[](size_t index);
-	
+	reference operator[](size_t index);
+	reference at(size_t index);
+	reference front();
+	reference back();
+	void data();
 
-	void Assign(size_t count, const int value);
-	void Assign(Iterator first,Iterator end);
-	void push_back(const int value);
+	void Assign(const size_t count, const int value);
+	void PushBack(const int value);
+	void PopBack();
+	Iterator insert(const Iterator position, const int value);
+	void erase(const Iterator position);
+	void swap(Vector &vector);
+	void clear();
 };
 

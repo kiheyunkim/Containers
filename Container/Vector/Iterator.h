@@ -4,14 +4,14 @@
 class Iterator
 {
 private:
-	Node *_target;
+	Node **_target;
 
 public:
-	Node* _GetNode() { return _target; }
+	Node** _GetNode() const { return _target; }
 
 public:
 	Iterator();
-	Iterator(Node *node);
+	Iterator(Node** node);
 	~Iterator() {}
 
 	Iterator operator++(int);
@@ -27,13 +27,13 @@ public:
 	int operator*();
 	friend std::ostream& operator<<(std::ostream& os, const Iterator& iter)
 	{
-		int value = iter._target->_GetValue();
+		int value = (*(iter._target))->_GetValue();
 		os << value;
 		return os;
 	}
 	friend std::istream& operator >> (std::istream& is, const Iterator& iter)
 	{
-		int value = iter._target->_GetValue();
+		int value = (*(iter._target))->_GetValue();
 		is >> value;
 		return is;
 	}

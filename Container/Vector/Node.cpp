@@ -1,13 +1,20 @@
 #include "Node.h"
 
-Node::Node() {}
+Node::Node() :_isEdge(false) {}
+
+Node::Node(bool status) : _isEdge(true) {}
+
 Node::~Node() {}
 
 int Node::_GetValue() { return _value; }
 
-int* Node::_GetAddr() { return &_value; }
+int& Node::_GetAddr() { return _value; }
 
 void Node::_SetValue(int value) { _value = value; }
+
+bool Node::_GetEdge() { return _isEdge; }
+
+void Node::_SetEdge(bool status) { _isEdge = status; }
 
 void Node::operator=(Node node) { _value = node._value; }
 
