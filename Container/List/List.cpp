@@ -60,6 +60,7 @@ List::const_reverse_iterator List::crend() { return _head; }
 	
 //capacity
 bool List::empty() { return _head->_GetNextNode() == _tail; }
+
 List::size_type List::size()
 {
 	int size = 0;
@@ -72,26 +73,24 @@ List::size_type List::size()
 	return size;
 }
 
-List::size_type List::max_size()
-{
-	return 0;
-}
+List::size_type List::max_size() { return -1; }
 
 //Element access
-List::reference List::front() { return *_head->_GetAddr(); }
-List::reference List::back() { return *_tail->_GetPrevNode()->_GetAddr(); }
+List::reference List::front() { return _head->_GetAddr(); }
+
+List::reference List::back() { return _tail->_GetPrevNode()->_GetAddr(); }
 
 //Modifiers
-void List::assign(size_type n, List::value_type val)
+void List::assign(size_type n, List::valueType value) 
 {
-	for (size_t i = 0; i < n; i++)
-		push_back(val);
+	for (size_t i = 0; i < n; i++)  
+		push_back(value); 
 }
 
-void List::emplace_front(List::value_type val)
+void List::emplace_front(List::valueType value)
 {
 	Node *newNode = new Node();
-	newNode->_SetValue(val);
+	newNode->_SetValue(value);
 
 	newNode->_SetNextNode(_head->_GetNextNode());
 	newNode->_SetPrevNode(_head);
@@ -99,10 +98,10 @@ void List::emplace_front(List::value_type val)
 	_head->_SetNextNode(newNode);
 }
 
-void List::push_front(List::value_type val)
+void List::push_front(List::valueType value)
 {
 	Node *newNode = new Node();
-	newNode->_SetValue(val);
+	newNode->_SetValue(value);
 	
 	newNode->_SetNextNode(_head->_GetNextNode());
 	newNode->_SetPrevNode(_head);
@@ -123,10 +122,10 @@ void List::pop_front()
 	delete tempNode;
 }
 
-void List::emplace_back(List::value_type val)
+void List::emplace_back(List::valueType value)
 {
 	Node *newNode = new Node();
-	newNode->_SetValue(val);
+	newNode->_SetValue(value);
 
 	newNode->_SetNextNode(_tail->_GetPrevNode()->_GetNextNode());
 	newNode->_SetPrevNode(_tail->_GetPrevNode());
@@ -134,10 +133,10 @@ void List::emplace_back(List::value_type val)
 	_tail->_SetPrevNode(newNode);
 }
 
-void List::push_back(int val)
+void List::push_back(List::valueType value)
 {
 	Node *newNode = new Node();
-	newNode->_SetValue(val);
+	newNode->_SetValue(value);
 
 	newNode->_SetNextNode(_tail->_GetPrevNode()->_GetNextNode());
 	newNode->_SetPrevNode(_tail->_GetPrevNode());
@@ -156,7 +155,7 @@ void List::pop_back()
 	delete tempNode;
 }
 
-Iterator List::insert(List::iterator pos, List::value_type val)		
+Iterator List::insert(List::iterator pos, List::valueType val)		
 {
 	Node *newNode = new Node();
 	newNode->_SetValue(val);

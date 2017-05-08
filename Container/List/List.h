@@ -5,12 +5,19 @@
 
 class List
 {
+private:
+	Node *_head;
+	Node *_tail;
+
+private:
+	void _swap(int *x1, int *x2);
+
 public:
-	typedef int value_type;
-	typedef value_type& reference;
-	typedef const value_type& const_reference;
-	typedef value_type* pointer;
-	typedef const value_type* const_pointer;
+	typedef int valueType;
+	typedef valueType& reference;
+	typedef const valueType& const_reference;
+	typedef valueType* pointer;
+	typedef const valueType* const_pointer;
 	typedef Iterator iterator;
 	typedef const Iterator const_iterator;
 	typedef Reverse_Iterator reverse_iterator;
@@ -43,14 +50,14 @@ public:
 	reference back();
 
 	//Modifiers
-	void assign(size_type n, value_type val);
-	void emplace_front(value_type val);
-	void push_front(value_type val);
+	void assign(size_type n, valueType value);
+	void emplace_front(valueType value);
+	void push_front(valueType value);
 	void pop_front();
-	void emplace_back(value_type val);
-	void push_back(int val);
+	void emplace_back(valueType value);
+	void push_back(valueType val);
 	void pop_back();
-	iterator insert(iterator pos, value_type val);
+	iterator insert(iterator pos, valueType value);
 	iterator erase(Iterator pos	);
 	void swap(List &list);
 	void resize(size_t size);
@@ -64,12 +71,4 @@ public:
 	void merge(List list);
 	void sort();
 	void reverse();
-
-private:
-	Node *_head;
-	Node *_tail;
-
-private:
-	void _swap(int *x1, int *x2);
 };
-

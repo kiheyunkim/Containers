@@ -14,7 +14,7 @@ public:
 	Node();
 	~Node();
 	value_type _GetValue() const;
-	value_type* _GetAddr();
+	value_type& _GetAddr();
 	Node *_GetNextNode() const;
 	Node *_GetPrevNode() const;
 	void _SetValue(value_type value);

@@ -15,11 +15,13 @@ Reverse_Iterator Reverse_Iterator::operator++(int)
 	return *this;
 }
 
-void Reverse_Iterator::operator++()
+Reverse_Iterator Reverse_Iterator::operator++()
 {
 	_target = _target->_GetPrevNode();
 	if (_target == nullptr)
 		std::_Debug_message(_T("Out of Range"), _T("Reverse_Iterator.cpp"), 21);
+
+	return *this;
 }
 
 Reverse_Iterator Reverse_Iterator::operator--(int) 
@@ -31,11 +33,13 @@ Reverse_Iterator Reverse_Iterator::operator--(int)
 	return *this;
 }
 
-void Reverse_Iterator::operator--()
+Reverse_Iterator Reverse_Iterator::operator--()
 {
 	_target = _target->_GetNextNode();
 	if (_target->_GetNextNode() == nullptr)
 		std::_Debug_message(_T("Out of Range"), _T("Reverse_Iterator.cpp"), 37);
+
+	return *this;
 }
 
 void Reverse_Iterator::operator=(Reverse_Iterator iter) { _target = iter._GetNode(); }
@@ -44,18 +48,16 @@ bool Reverse_Iterator::operator==(Reverse_Iterator iter) const { return _target 
 
 bool Reverse_Iterator::operator!=(Reverse_Iterator iter) const { return _target != iter._GetNode(); }
 
-Reverse_Iterator::value_type Reverse_Iterator::operator*() const 
+Reverse_Iterator::valueType Reverse_Iterator::operator*() const 
 {
 	if(_target->_GetPrevNode()==nullptr)
 		std::_Debug_message(_T("Out of Range"), _T("Reverse_Iterator.cpp"), 49);
 	return _target->_GetValue(); 
 }
 
-Reverse_Iterator::value_type* Reverse_Iterator::operator&() const 
+Reverse_Iterator::reference Reverse_Iterator::operator&() const 
 {
 	if (_target->_GetPrevNode() == nullptr)
 		std::_Debug_message(_T("Pit pf Range"), _T("Reverse_Iterator.cpp"), 57);
 	return _target->_GetAddr(); 
 }
-
-Node* Reverse_Iterator::operator->() const { return _target; }

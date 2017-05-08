@@ -3,16 +3,6 @@
 #include"List.h"
 #include<list>
 
-
-void print1()
-{
-	std::list<int,std::allocator<unsigned int>> List; //357,913,941  //357913941	//357913941
-	unsigned int i = -1;
-	List.push_back(-11);
-	std::cout << List.max_size() << std::endl;
-	std::cout << i/sizeof(int)/3 << std::endl;
-}
-
 void print(List list)
 {
 	for (List::iterator iter = list.begin(); iter != list.end(); iter++)

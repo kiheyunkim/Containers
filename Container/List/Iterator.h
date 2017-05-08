@@ -6,26 +6,29 @@ class Iterator
 {
 private:
 	Node *_target;
+
 public:
-	typedef int value_type;
+	typedef int valueType;
+	typedef valueType& reference;
+	
 public:
 	Node* _GetNode();
+
 public:
 	Iterator();
 	Iterator(Node *node);
 	~Iterator();
 
 	Iterator operator++(int);
-	void operator++();
+	Iterator operator++();
 	Iterator operator--(int);
-	void operator--();;
+	Iterator operator--();;
 	void operator=(Iterator iter);
 	bool operator==(Iterator iter) const;
 	bool operator!=(Iterator iter) const;
-	value_type operator*() const;
-	value_type* operator&() const;
-	Node* operator->() const;
-
+	valueType operator*() const;
+	reference operator&() const;
+	
 	friend std::ostream& operator<<(std::ostream& os, const Iterator& iter)
 	{
 		Iterator::value_type value = iter._target->_GetValue();
