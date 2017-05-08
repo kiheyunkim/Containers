@@ -15,23 +15,23 @@ Vector::Iterator Vector::Begin() const { return &_dataArray[_headIndex]; }
 
 Vector::Iterator Vector::End() const { return  &_dataArray[_tailIndex]; }
 
-Vector::Reverse_Iterator Vector::RBegin() const { return _dataArray[_tailIndex]; }
+Vector::reverseIterator Vector::RBegin() const { return _dataArray[_tailIndex]; }
 
-Vector::Reverse_Iterator Vector::REnd() const { return _dataArray[_headIndex]; }
+Vector::reverseIterator Vector::REnd() const { return _dataArray[_headIndex]; }
 
-const Vector::Iterator Vector::CBegin() const {return &_dataArray[_headIndex];}
+Vector::constIterator Vector::CBegin() const {return &_dataArray[_headIndex];}
 
-const Vector::Iterator Vector::CEnd() const {return &_dataArray[_tailIndex];}
+Vector::constIterator Vector::CEnd() const {return &_dataArray[_tailIndex];}
 
-const Vector::Reverse_Iterator Vector::CrBegin() const {return _dataArray[_tailIndex];}
+Vector::constReverseIterator Vector::CrBegin() const {return _dataArray[_tailIndex];}
 
-const Vector::Reverse_Iterator Vector::CrEnd() const {return _dataArray[_headIndex];}
+Vector::constReverseIterator Vector::CrEnd() const {return _dataArray[_headIndex];}
 
-size_t Vector::Size() const { return _tailIndex - _headIndex - 1; }
+Vector::sizeType Vector::Size() const { return _tailIndex - _headIndex - 1; }
 
-size_t Vector::MaxSize() const { return _arraySize - 2; }
+Vector::sizeType Vector::MaxSize() const { return _arraySize - 2; }
 
-size_t Vector::capacity() const { return _arraySize; }
+Vector::sizeType Vector::capacity() const { return _arraySize; }
 
 bool Vector::Empty() const { return _headIndex == _tailIndex; }
 
@@ -123,7 +123,6 @@ void Vector::PopBack()
 
 Iterator Vector::insert(const Iterator position, const int value)
 {
-
 	if (_tailIndex % ALLOC_SIZE == ALLOC_SIZE - 2 || _dataArray == nullptr)
 	{
 		Node** tempArray = new Node*[_arraySize + ALLOC_SIZE];
@@ -231,7 +230,7 @@ void Vector::clear()
 	delete[] _dataArray;
 
 	_dataArray = nullptr;
-	_headIndex = 0;
-	_tailIndex = 0;
+	_headIndex = 1;
+	_tailIndex = 1;
 	_arraySize = 0;
 }

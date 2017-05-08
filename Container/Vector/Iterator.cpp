@@ -17,6 +17,7 @@ Iterator Iterator::operator+(int count)
 		if (_target != nullptr)
 			_target++;
 	}
+
 	return *this;
 }
 
@@ -27,28 +28,35 @@ Iterator Iterator::operator+=(int count)
 		if (_target != nullptr)
 			_target++;
 	}
+
 	return *this;
 }
 
 Iterator Iterator::operator--()
 {
-	_target--;
+	--_target;
 	return *this;
 }
 
 Iterator Iterator::operator-(int count)
 {
 	for (int i = 0; i < count; i++)
+	{
 		if (_target != nullptr)
 			_target--;
+	}
+
 	return *this;
 }
 
 Iterator Iterator::operator-=(int count)
 {
 	for (int i = 0; i < count; i++)
+	{
 		if (_target != nullptr)
 			_target--;
+	}
+
 	return *this;
 }
 
@@ -56,6 +64,7 @@ int Iterator::operator[](int index)
 {
 	for (int i = 0; i < index; i++)
 		_target--;
+
 	return (*_target)->_GetValue();
 }
 
@@ -65,7 +74,6 @@ bool Iterator::operator!=(Iterator iter) { return _target != iter._target; }
 
 bool Iterator::operator==(Iterator iter) { return _target == iter._target; }
 
-int Iterator::operator*()
-{
-	return (*_target)->_GetValue();
-}
+int Iterator::operator*() { return (*_target)->_GetValue(); }
+
+int& Iterator::operator&() { return (*_target)->_GetAddr(); }

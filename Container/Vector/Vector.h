@@ -16,9 +16,16 @@ private:
 	size_t _arraySize;
 
 public:
+	typedef int valueType;
+	typedef valueType& reference;
+	typedef const valueType& constReference;
+	typedef valueType* pointer;
+	typedef const valueType* constPointer;
 	typedef Iterator Iterator;
-	typedef Reverse_Iterator Reverse_Iterator;
-	typedef int& reference;
+	typedef const Iterator constIterator;
+	typedef Reverse_Iterator reverseIterator;
+	typedef const Reverse_Iterator constReverseIterator;
+	typedef size_t sizeType;
 
 public:
 	Vector();
@@ -33,10 +40,10 @@ public:
 	const Reverse_Iterator CrBegin() const;
 	const Reverse_Iterator CrEnd() const;
 
-	size_t Size() const;
-	size_t MaxSize() const;
+	sizeType Size() const;
+	sizeType MaxSize() const;
 	void resize();
-	size_t capacity() const;
+	sizeType capacity() const;
 	bool Empty() const;
 	void Reserve();
 	void ShrinkToFit();

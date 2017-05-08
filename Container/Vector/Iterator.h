@@ -25,6 +25,8 @@ public:
 	bool operator==(Iterator node);
 	bool operator!=(Iterator node);
 	int operator*();
+	int& operator&();
+
 	friend std::ostream& operator<<(std::ostream& os, const Iterator& iter)
 	{
 		int value = (*(iter._target))->_GetValue();
@@ -37,6 +39,5 @@ public:
 		is >> value;
 		return is;
 	}
-
 };
 

@@ -6,10 +6,13 @@ class Reverse_Iterator
 {
 private:
 	Node *_target;
+
 public:
 	typedef int value_type;
+
 public:
 	Node* _GetNode();
+
 public:
 	Reverse_Iterator();
 	Reverse_Iterator(Node *node);
@@ -23,8 +26,8 @@ public:
 	bool operator==(Reverse_Iterator iter) const;
 	bool operator!=(Reverse_Iterator iter) const;
 	value_type operator*() const;
-	value_type* operator&() const;
-	Node* operator->() const;
+	value_type& operator&() const;
+
 	friend std::ostream& operator<<(std::ostream& os, const Reverse_Iterator& iter)
 	{
 		Reverse_Iterator::value_type value = iter._target->_GetValue();
