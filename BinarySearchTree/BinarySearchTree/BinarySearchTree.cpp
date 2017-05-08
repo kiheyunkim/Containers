@@ -84,7 +84,7 @@ Node* BinarySearchTree::Pop(const int _value)
 	Node* prevCur = _root;
 	Node* cur = _root;
 	Node* returnNode = nullptr;
-
+	
 	while (cur->_GetValue() != _value)
 	{
 		prevCur = cur;
@@ -94,6 +94,50 @@ Node* BinarySearchTree::Pop(const int _value)
 			cur = cur->_GetRightNode();
 	}
 
+	if (cur == _root&&cur->_GetLeftNode() == nullptr&&cur->_GetRightNode() == nullptr)
+	{
+		_root = nullptr;
+		returnNode = cur;
+		delete cur;
+		return returnNode;
+	}
+
+	if (prevCur->_GetLeftNode() == cur)
+	{
+		if (cur->_GetLeftNode() == nullptr&&cur->_GetRightNode() == nullptr)
+		{
+			prevCur->_SetLeftNode(nullptr);
+			returnNode = cur;
+			delete cur;
+			return returnNode;
+		}
+
+		Node* replaceNode = cur;
+
+		if (cur->_GetRightNode() == nullptr)
+		{
+			cur = cur->_GetLeftNode();
+
+			if (cur->_GetLeftNode() == nullptr&&cur->_GetRightNode() == nullptr)
+			{
+
+			}
+
+
+
+		}
+
+
+
+
+	}
+
+
+
+
+
+	
+
 	if (cur == _root && cur->_GetLeftNode() == nullptr && cur->_GetRightNode() == nullptr)		//Only in root
 	{
 		_root = nullptr;
@@ -101,8 +145,8 @@ Node* BinarySearchTree::Pop(const int _value)
 		delete cur;
 		return returnNode;
 	}
-	
-	if (prevCur->_GetRightNode() == cur)
+
+	if (prevCur->_GetRightNode() == cur)														
 	{
 		if (cur->_GetLeftNode() == nullptr && cur->_GetRightNode() == nullptr)					//terminal node;
 		{
