@@ -28,7 +28,7 @@ Tree::~Tree()
 	}
 }
 
-bool Tree::isEmpty() const { return root == nullptr; }
+bool Tree::IsEmpty() const { return root == nullptr; }
 
 void Tree::reConstructTree()
 {
@@ -62,11 +62,9 @@ void Tree::Push(const int value)
 			indexArray = tempArray;
 	}
 
-
 	Node* newNode = new Node();
 	newNode->_SetValue(value);
 	indexArray[currentIndex] = newNode;
-
 
 	if (currentIndex == 0)		//return for first Node
 	{
@@ -85,37 +83,42 @@ void Tree::Push(const int value)
 
 void Tree::Pop()
 {
-	if (isEmpty()) return;
+	if (IsEmpty()) return;
 
 	//pop last Node
-	delete indexArray[currentIndex];
-	if ((currentIndex + 1) % 2 == 0)	//if pop Node is left Child Node 
-		indexArray[((currentIndex + 1) / 2) - 1]->_SetLeftNode(nullptr);
-	else								//if pop Node is right Child Node
-		indexArray[((currentIndex + 1) / 2) - 1]->_SetRightNode(nullptr);
-	
-	currentIndex--;
+	delete indexArray[currentIndex - 1];
 
 	//if final node is deleted, initialize all variables
-	if (currentIndex == 0)
+	if (currentIndex == 1)
 	{
-		delete indexArray[currentIndex];
 		delete[] indexArray;
 		indexArray = nullptr;
+		currentIndex = 0;
 		root = nullptr;
+		arraySize = 0;
 		return;
 	}
 
+	currentIndex--;
+
+	if (currentIndex % 2 == 0)	//if pop Node is left Child Node
+		indexArray[((currentIndex + 1) / 2) - 1]->_SetRightNode(nullptr);
+	else						//if pop Node is right Child Node
+		indexArray[((currentIndex + 1) / 2) - 1]->_SetLeftNode(nullptr);
+
+
 	//Memoey Re-Allocate
-	if (!(currentIndex%ALLOCSIZE))			
+	if ((currentIndex% ALLOCSIZE) == 0)
 	{
 		if (currentIndex == 0) return;
 		Node** tempArray = new Node*[arraySize - ALLOCSIZE];
 		arraySize -= ALLOCSIZE;
 		memset(tempArray, 0, arraySize * sizeof(Node*));
 		memcpy(tempArray, indexArray, arraySize * sizeof(Node*));
+		
+		delete[] indexArray;
+		indexArray = tempArray;
 		reConstructTree();
-		root = tempArray[0];
 	}
 }
 
