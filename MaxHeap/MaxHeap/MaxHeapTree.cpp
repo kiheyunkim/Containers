@@ -23,7 +23,7 @@ MaxHeapTree::MaxHeapTree(MaxHeapTree& heap) : arraySize(0), currentIndex(0), roo
 		tempArray[i] = new Node(*heap.indexArray[i]);
 
 	root = tempArray[0];
-	reConstructTree();
+	_reConstructTree();
 }
 
 MaxHeapTree::~MaxHeapTree()
@@ -38,7 +38,7 @@ MaxHeapTree::~MaxHeapTree()
 
 bool MaxHeapTree::IsEmpty() const { return root == nullptr; }
 
-void MaxHeapTree::reConstructTree()
+void MaxHeapTree::_reConstructTree()
 {
 	for (int index = currentIndex - 1; index > 0; index--)
 	{
@@ -64,7 +64,7 @@ void MaxHeapTree::Push(const int value)
 			memcpy(tempArray, indexArray, (arraySize - ALLOCSIZE) * sizeof(Node*));
 			delete[] indexArray;
 			indexArray = tempArray;
-			reConstructTree();
+			_reConstructTree();
 		}
 		else
 			indexArray = tempArray;
@@ -144,7 +144,7 @@ void MaxHeapTree::Pop()
 
 		delete[] indexArray;
 		indexArray = tempArray;
-		reConstructTree();
+		_reConstructTree();
 	}
 
 	int pos = 0;
@@ -199,5 +199,5 @@ void MaxHeapTree::operator=(const MaxHeapTree heap)
 		tempArray[i] = new Node(*heap.indexArray[i]);
 
 	root = tempArray[0];
-	reConstructTree();
+	_reConstructTree();
 }
