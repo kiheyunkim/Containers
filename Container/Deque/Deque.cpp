@@ -127,7 +127,7 @@ Deque::reference Deque::at(size_t n)
 	{
 		cur = cur->_GetNextNode();
 	}
-	return *cur->_GetAddr();
+	return cur->_GetAddr();
 }
 
 Deque::value_type Deque::front() { return _head->_GetNextNode()->_GetValue(); }

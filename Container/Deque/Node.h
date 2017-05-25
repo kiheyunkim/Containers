@@ -1,5 +1,5 @@
 #pragma once
-
+#include<memory>
 class Node
 {
 private:
@@ -12,23 +12,24 @@ public:
 
 public:
 	Node();
+	Node(const Node& node);
 	~Node();
-	value_type _GetValue();
-	value_type* _GetAddr();
-	Node *_GetNextNode() const;
-	Node *_GetPrevNode() const;
+	value_type _GetValue() const;
+	value_type& _GetAddr();
+	Node* _GetNextNode() const;
+	Node* _GetPrevNode() const;
 	void _SetValue(value_type value);
-	void _SetPrevNode(Node *ptr);
-	void _SetNextNode(Node *ptr);
+	void _SetPrevNode(const Node *ptr);
+	void _SetNextNode(const Node *ptr);
 
 public:
-	void operator=(Node node);
-	Node operator+(int value);
-	Node operator-(int value);
-	void operator+=(int value);
-	void operator-=(int value);
-	bool operator==(Node node);
-	bool operator!=(Node node);
+	Node& operator=(const Node& node);
+	Node& operator+(int value);
+	Node& operator-(int value);
+	Node& operator+=(int value);
+	Node& operator-=(int value);
+	bool operator==(const Node& node)const;
+	bool operator!=(const Node& node)const;
 };
 
 
