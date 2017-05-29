@@ -2,6 +2,16 @@
 #include<vector>
 void main()
 {
+	int value = 10;
+	const int* cp = &value;
+	int * const * pcp;
+
+	const int value2 = 20;
+
+	int value3 = value2;
+
+
+
 	Vector vec;
 	vec.PushBack(2);
 	vec.PushBack(3);
@@ -9,12 +19,14 @@ void main()
 	vec.PushBack(5);
 	vec.PushBack(6);
 	vec.PushBack(7);
-	vec.PushBack(8);
-	vec.PushBack(9);
-	vec.PushBack(10);
-	vec.PushBack(11);
-	vec.PushBack(12);
-	vec.PopBack();
+
+	vec._dataArray[0];
+	vec._dataArray[1];
+	vec._dataArray[2];
+	vec._dataArray[3];
+	vec._dataArray[4];
+	vec._dataArray[5];
+
 	for (Vector::Iterator iter = vec.Begin(); iter != vec.End(); iter++)
 	{
 		std::cout << *iter << ' ';
@@ -103,6 +115,8 @@ void main()
 		std::cout << *iter << ' ';
 	}
 	std::cout << std::endl;
+
+	
 
 	//for (Vector::Iterator iter = vec.Begin(); iter != vec.End(); iter++)
 	//{

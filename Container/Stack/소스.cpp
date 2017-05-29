@@ -26,5 +26,6 @@ void main()
 	stack.push(8);
 	std::cout << stack.GetAddr() << std::endl;
 	print(stack);
+	stack.pop();
 	print(stack);
 }

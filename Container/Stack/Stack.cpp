@@ -2,12 +2,12 @@
 
 Stack::Stack() :_top(nullptr) {}
 
-Stack::Stack(const Stack &stack) : _top(nullptr)
+Stack::Stack(const Stack& stack) : _top(nullptr)
 {
-	Node *cur = stack._top;
-
+	Node* cur = stack._top;
 	size_t copySize = stack.size();
-	Stack::value_type *copyArray = new Stack::value_type[copySize];
+
+	Stack::value_type* copyArray = static_cast<value_type*>(new Stack::value_type[copySize]);
 
 	for (Stack::size_type i = copySize - 1; i >= 0; i--)
 	{
@@ -19,18 +19,18 @@ Stack::Stack(const Stack &stack) : _top(nullptr)
 	for (Stack::size_type i = 0; i < copySize; i++)
 		this->push(copyArray[i]);
 
-	delete copyArray;
+	delete[] copyArray;
 }
 
 Stack::~Stack() {}
 
-void Stack::operator=(Stack &stack)
+void Stack::operator=(const Stack& stack)
 {
 	while (!empty()) { pop(); }
-	Node *cur = stack._top;
+	Node* cur = stack._top;
 
 	Stack::size_type copySize = stack.size();
-	Stack::value_type *newArray = new Stack::value_type(copySize);
+	Stack::value_type* newArray = static_cast<value_type*>(new Stack::value_type[copySize]);
 
 	for (Stack::size_type i = copySize - 1; i >= 0; i--)
 	{
@@ -42,7 +42,7 @@ void Stack::operator=(Stack &stack)
 	for (Stack::size_type i = 0; i < copySize; i++)
 		this->push(newArray[i]);
 
-	delete newArray;
+	delete[] newArray;
 }
 
 bool Stack::empty() const { return _top == nullptr; }
@@ -61,18 +61,18 @@ Stack::size_type Stack::size() const
 	return count;
 }
 
-Stack::reference Stack::top() { return *_top->_GetAddr(); }
+Stack::reference Stack::top() { return _top->_GetAddr(); }
 
 void Stack::push(Stack::value_type val)
 {
 	if (empty())
 	{
-		Node *newNode = new Node();
+		Node* newNode = static_cast<Node*>(new Node());
 		newNode->_SetValue(val);
 		_top = newNode;
 		return;
 	}
-	Node *newNode = new Node();
+	Node* newNode = static_cast<Node*>(new Node());
 	newNode->_SetValue(val);
 	newNode->_SetNextNode(_top);
 	_top->_SetPrevNode(newNode);
@@ -83,12 +83,12 @@ void Stack::emplace(Stack::value_type val)
 {
 	if (empty())
 	{
-		Node *newNode = new Node();
+		Node* newNode = static_cast<Node*>(new Node());
 		newNode->_SetValue(val);
 		_top = newNode;
 		return;
 	}
-	Node *newNode = new Node();
+	Node* newNode = static_cast<Node*>(new Node());
 	newNode->_SetValue(val);
 	newNode->_SetNextNode(_top);
 	_top->_SetPrevNode(newNode);
@@ -104,7 +104,7 @@ void Stack::pop()
 		_top = nullptr;
 		return;
 	}
-	Node *temp = _top;
+	Node* temp = _top;
 	_top = _top->_GetNextNode();
 	temp->_SetPrevNode(nullptr);
 	delete temp;

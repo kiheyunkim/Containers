@@ -9,7 +9,7 @@ private:
 	Node *_rear;
 public:
 	Deque();
-	Deque(Deque &deque);
+	Deque(const Deque& deque);
 	~Deque();
 	
 	typedef int value_type;
@@ -26,43 +26,43 @@ public:
 	typedef size_t size_type;
 	
 	
-	void operator=(Deque &deque);
+	void operator=(const Deque& deque);
 
 	//Iterators
 	iterator begin();
 	iterator end();
 	reverse_iterator rbegin();
 	reverse_iterator rend();
-	const_iterator cbegin();
-	const_iterator cend();
-	const_reverse_iterator crbegin();
-	const_reverse_iterator crend();
+	const_iterator cbegin() const;
+	const_iterator cend() const;
+	const_reverse_iterator crbegin() const ;
+	const_reverse_iterator crend() const;
 
 	//Capacity
-	size_type size();
+	size_type size() const;
 	size_type max_size();
 	void resize(size_t newSize);
-	bool empty();
+	bool empty() const;
 	void shrink_to_fit();
 
 	//Element Access;
 	value_type operator[](size_t count);
 	reference at(size_t n);	
-	value_type front();
-	value_type back();
+	value_type front() const;
+	value_type back() const;
 
 
 	//Modifiers
-	void assign(Iterator first, Iterator last);
+	void assign(const Iterator& first, const Iterator& last);
 	void push_back(value_type value);
 	void push_front(value_type value);
 	void pop_back();
 	void pop_front();
-	iterator insert(const_iterator position, const value_type& val);
-	iterator erase(const_iterator position);
-	void swap(Deque &deque);
+	iterator insert(const_iterator& position, value_type val);
+	iterator erase(const_iterator& position);
+	void swap(Deque& deque);
 	void clear();
-	iterator emplace(Deque::const_iterator position, Deque::value_type val);
+	iterator emplace(Deque::const_iterator& position, Deque::value_type val);
 	iterator emplace_back(Deque::value_type val);
 	iterator emplace_front(Deque::value_type val);
 

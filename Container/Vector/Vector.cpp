@@ -1,7 +1,5 @@
 #include "Vector.h"
 
-
-
 Vector::Vector() :_headIndex(1), _tailIndex(1), _arraySize(0), _dataArray(nullptr) {}
 
 Vector::~Vector()
@@ -11,26 +9,16 @@ Vector::~Vector()
 	delete[] _dataArray;
 }
 
-Vector::Iterator Vector::Begin() const { return &_dataArray[_headIndex]; }
-
-Vector::Iterator Vector::End() const { return  &_dataArray[_tailIndex]; }
-
-Vector::reverseIterator Vector::RBegin() const { return _dataArray[_tailIndex]; }
-
-Vector::reverseIterator Vector::REnd() const { return _dataArray[_headIndex]; }
-
-Vector::constIterator Vector::CBegin() const {return &_dataArray[_headIndex];}
-
-Vector::constIterator Vector::CEnd() const {return &_dataArray[_tailIndex];}
-
+Vector::Iterator Vector::Begin() const { return static_cast<Iterator>(_dataArray[_headIndex]); }
+Vector::Iterator Vector::End() const { return  static_cast<Iterator>(_dataArray[_tailIndex]); }
+Vector::reverseIterator Vector::RBegin() const { return &_dataArray[_tailIndex]; }
+Vector::reverseIterator Vector::REnd() const { return &_dataArray[_headIndex]; }
+Vector::constIterator Vector::CBegin() const {return _dataArray[_headIndex];}
+Vector::constIterator Vector::CEnd() const {return _dataArray[_tailIndex];}
 Vector::constReverseIterator Vector::CrBegin() const {return _dataArray[_tailIndex];}
-
 Vector::constReverseIterator Vector::CrEnd() const {return _dataArray[_headIndex];}
-
 Vector::sizeType Vector::Size() const { return _tailIndex - _headIndex - 1; }
-
 Vector::sizeType Vector::MaxSize() const { return _arraySize - 2; }
-
 Vector::sizeType Vector::capacity() const { return _arraySize; }
 
 bool Vector::Empty() const { return _headIndex == _tailIndex; }
@@ -54,7 +42,7 @@ Vector::reference Vector::front() { return _dataArray[_headIndex]->_GetAddr(); }
 
 Vector::reference Vector::back() { return _dataArray[_tailIndex - 1]->_GetAddr(); }
 
-void Vector::Assign(const size_t count, const int value)
+void Vector::Assign(size_t count, int value)
 {
 	size_t i = 0;
 
@@ -65,7 +53,7 @@ void Vector::Assign(const size_t count, const int value)
 	}
 }
 
-void Vector::PushBack(const int value)
+void Vector::PushBack(int value)
 {
 	if (_tailIndex % ALLOC_SIZE == ALLOC_SIZE - 2 || _dataArray == nullptr)
 	{
@@ -121,7 +109,7 @@ void Vector::PopBack()
 	}
 }
 
-Iterator Vector::insert(const Iterator position, const int value)
+Iterator Vector::insert(const Iterator& position, const int value)
 {
 	if (_tailIndex % ALLOC_SIZE == ALLOC_SIZE - 2 || _dataArray == nullptr)
 	{
@@ -152,7 +140,7 @@ Iterator Vector::insert(const Iterator position, const int value)
 	{
 		insertIndex++;
 		if (_dataArray[insertIndex]->_GetEdge())	exit(1);					// invalid iterator
-		if (position._GetNode() == &_dataArray[insertIndex]) break;	
+		if (const_cast<Iterator&>(position)._GetNode() == _dataArray[insertIndex]) break;	
 	}
 
 	size_t moveCount = _tailIndex - insertIndex + 1;
@@ -166,10 +154,10 @@ Iterator Vector::insert(const Iterator position, const int value)
 	_dataArray[insertIndex] = newNode;
 
 	_tailIndex += 1;
-	return &_dataArray[insertIndex];
+	return _dataArray[insertIndex];
 }
 
-void Vector::erase(const Iterator position)
+void Vector::erase(const Iterator& position)
 {
 	if (Empty()) return;
 
@@ -179,7 +167,7 @@ void Vector::erase(const Iterator position)
 	{
 		deleteIndex++;
 		if (_dataArray[deleteIndex]->_GetEdge())	exit(1);					// invalid iterator
-		if (position._GetNode() == &_dataArray[deleteIndex]) break;
+		if (const_cast<Iterator&>(position)._GetNode() == _dataArray[deleteIndex]) break;
 	}
 
 	Node* deleteNode = _dataArray[deleteIndex];
@@ -205,22 +193,11 @@ void Vector::erase(const Iterator position)
 
 void Vector::swap(Vector &vector)
 {
-	Vector vec;
+	Vector tempVector;
 
-	vec._headIndex = vector._headIndex;
-	vec._tailIndex = vector._tailIndex;
-	vec._arraySize = vector._arraySize;
-	vec._dataArray = vector._dataArray;
-
-	vector._headIndex = _headIndex;
-	vector._tailIndex = _tailIndex;
-	vector._arraySize = _arraySize;
-	vector._dataArray = _dataArray;
-
-	_headIndex = vec._headIndex;
-	_tailIndex = vec._tailIndex;
-	_arraySize = vec._arraySize;
-	_dataArray = vec._dataArray;
+	memcpy(&tempVector, this, sizeof(Vector));
+	memcpy(this, &vector, sizeof(Vector));
+	memcpy(&vector, &tempVector, sizeof(Vector));
 }
 
 void Vector::clear()

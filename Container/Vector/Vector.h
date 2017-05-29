@@ -7,7 +7,7 @@
 
 class Vector
 {
-private:
+public:
 	Node** _dataArray;
 
 private:
@@ -54,12 +54,12 @@ public:
 	reference back();
 	void data();
 
-	void Assign(const size_t count, const int value);
-	void PushBack(const int value);
+	void Assign(size_t count, int value);
+	void PushBack(int value);
 	void PopBack();
-	Iterator insert(const Iterator position, const int value);
-	void erase(const Iterator position);
-	void swap(Vector &vector);
+	Iterator insert(const Iterator& position,int value);
+	void erase(const Iterator& position);
+	void swap(Vector& vector);
 	void clear();
 };
 

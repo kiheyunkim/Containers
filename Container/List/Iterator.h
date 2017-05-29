@@ -16,29 +16,26 @@ public:
 
 public:
 	Iterator();
-	Iterator(Node *node);
+	Iterator(const Node& node);
 	~Iterator();
 
-	Iterator operator++(int);
-	Iterator operator++();
-	Iterator operator--(int);
-	Iterator operator--();;
-	void operator=(Iterator iter);
-	bool operator==(Iterator iter) const;
-	bool operator!=(Iterator iter) const;
+	Iterator& operator++(int);
+	Iterator& operator--(int);
+	Iterator& operator=(const Iterator& iter);
+	bool operator==(const Iterator& iter) const;
+	bool operator!=(const Iterator& iter) const;
 	valueType operator*() const;
-	reference operator&() const;
 	
 	friend std::ostream& operator<<(std::ostream& os, const Iterator& iter)
 	{
-		Iterator::value_type value = iter._target->_GetValue();
+		Iterator::valueType value = iter._target->_GetValue();
 		os << value;
 		return os;
 	}
 
 	friend std::istream& operator >> (std::istream& is, const Iterator& iter)
 	{
-		Iterator::value_type value = iter._target->_GetValue();
+		Iterator::valueType value = iter._target->_GetValue();
 		is >> value;
 		return is;
 	}

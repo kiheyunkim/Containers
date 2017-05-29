@@ -6,11 +6,11 @@
 class List
 {
 private:
-	Node *_head;
-	Node *_tail;
+	Node* _head;
+	Node* _tail;
 
 private:
-	void _swap(int *x1, int *x2);
+	void _swap(int &x1, int &x2);
 
 public:
 	typedef int valueType;
@@ -26,23 +26,23 @@ public:
 
 public:
 	List();
-	List(List &list);
+	List(const List& list);
 	~List();
-	void operator=(List &targetList);
+	List& operator=(const List& targetList);
 
 	//Iterator
 	iterator begin();
 	iterator end();
 	reverse_iterator rbegin();
 	reverse_iterator rend();
-	const_iterator cbegin();
-	const_iterator cend();
-	const_reverse_iterator crbegin();
-	const_reverse_iterator crend();
+	const_iterator cbegin() const;
+	const_iterator cend() const;
+	const_reverse_iterator crbegin() const;
+	const_reverse_iterator crend() const;
 
 	//Capacity
-	bool empty();
-	size_type size();
+	bool empty() const;
+	size_type size() const;
 	size_type max_size();
 
 	//Element access
@@ -57,18 +57,18 @@ public:
 	void emplace_back(valueType value);
 	void push_back(valueType val);
 	void pop_back();
-	iterator insert(iterator pos, valueType value);
-	iterator erase(Iterator pos	);
+	iterator insert(const iterator& pos, valueType value);
+	iterator erase(const Iterator& pos);
 	void swap(List &list);
 	void resize(size_t size);
 	void clear();
 
 	//Operations
-	void splice(Iterator iter, List *list);
+	void splice(const Iterator& iter, List& list);
 	void remove(const int val);
 	void remove_if(bool(*compare)(const int&));
 	void unique();
-	void merge(List list);
+	void merge(List& list);
 	void sort();
 	void reverse();
 };

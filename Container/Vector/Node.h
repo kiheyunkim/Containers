@@ -9,21 +9,22 @@ private:
 public:
 	Node();
 	Node(bool status);
+	Node(const Node& node);
 	~Node();
-	int _GetValue();
+	int _GetValue() const;
 	int& _GetAddr();
 	void _SetValue(int value);
-	bool _GetEdge();
+	bool _GetEdge() const;
 	void _SetEdge(bool status);
 
 public:
-	void operator=(Node node);
-	Node operator+(int value);
-	Node operator-(int value);
-	void operator+=(int value);
-	void operator-=(int value);
-	bool operator==(Node node);
-	bool operator!=(Node node);
+	Node& operator=(const Node& node);
+	Node& operator+(int value);
+	Node& operator-(int value);
+	Node& operator+=(int value);
+	Node& operator-=(int value);
+	bool operator==(const Node& node);
+	bool operator!=(const Node& node);
 };
 
 

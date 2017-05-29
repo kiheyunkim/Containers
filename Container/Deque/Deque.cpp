@@ -4,24 +4,24 @@
 
 Deque::Deque() :_head(nullptr), _rear(nullptr)
 {
-	Node *headDummyNode = new Node();
-	Node *rearDummyNode = new Node();
+	Node* headDummyNode = static_cast<Node*>(new Node());
+	Node* rearDummyNode = static_cast<Node*>(new Node());
 	_head = headDummyNode;
 	_rear = rearDummyNode;
 	_head->_SetNextNode(_rear);
 	_rear->_SetPrevNode(_head);
 }
 
-Deque::Deque(Deque &deque) :_head(nullptr), _rear(nullptr)
+Deque::Deque(const Deque& deque) :_head(nullptr), _rear(nullptr)
 {
-	Node *headDummyNode = new Node();
-	Node *rearDummyNode = new Node();
+	Node* headDummyNode = static_cast<Node*>(new Node());
+	Node* rearDummyNode = static_cast<Node*>(new Node());
 	_head = headDummyNode;
 	_rear = rearDummyNode;
 	_head->_SetNextNode(_rear);
 	_rear->_SetPrevNode(_head);
 
-	for (Iterator iter = deque.begin(); iter != deque.end(); iter++)
+	for (Iterator iter = deque.cbegin(); iter != deque.cend(); iter++)
 		push_back(*iter);
 }
 
@@ -31,54 +31,30 @@ Deque::~Deque()
 	delete _rear; 
 }
 
-void Deque::operator=(Deque &deque)
+void Deque::operator=(const Deque& deque)
 {
 	clear();
 	size_t copySize = size();
+	Iterator iter = static_cast<Iterator>(deque.cbegin());
+	
 	for (size_t i = 0; i < copySize; i++)
-	{
-		push_back(deque.front());
-		deque.pop_front();
-	}
+		push_back(iter[i]);
 }
 
-Deque::iterator Deque::begin()
-{
-	if (empty()) return nullptr;
-	return  _head->_GetNextNode();
-}
+Deque::iterator Deque::begin() { return  static_cast<Iterator>(*_head->_GetNextNode()); }
+Deque::iterator Deque::end() { return static_cast<Iterator>(*_rear); }
+Deque::reverse_iterator Deque::rbegin() { return static_cast<Reverse_Iterator>(*_rear->_GetPrevNode()); }
+Deque::reverse_iterator Deque::rend() { return static_cast<Reverse_Iterator>(*_head); }
+Deque::const_iterator Deque::cbegin() const { return static_cast<const_iterator>(*_head->_GetNextNode()); }
+Deque::const_iterator Deque::cend() const { return static_cast<const_iterator>(*_rear); }
+Deque::const_reverse_iterator Deque::crbegin() const { return static_cast<const_reverse_iterator>(*_rear->_GetPrevNode()); }
+Deque::const_reverse_iterator Deque::crend() const { return static_cast<const_reverse_iterator>(*_head); }
 
-Deque::iterator Deque::end() { return _rear; }
-
-Deque::reverse_iterator Deque::rbegin()
-{
-	if (empty()) return nullptr;
-	return _rear->_GetPrevNode();
-}
-
-Deque::reverse_iterator Deque::rend() { return _head; }
-
-Deque::const_iterator Deque::cbegin()
-{
-	if (empty()) return nullptr;
-	return _head->_GetNextNode();
-}
-
-Deque::const_iterator Deque::cend() { return _rear; }
-
-Deque::const_reverse_iterator Deque::crbegin()
-{
-	if (empty()) return nullptr;
-	return _rear->_GetPrevNode();
-}
-
-Deque::const_reverse_iterator Deque::crend() { return _head; }
-
-Deque::size_type Deque::size()
+Deque::size_type Deque::size() const
 {
 	size_t size = 0;
-	Deque::iterator tempIter = begin();
-	while (tempIter != end())
+	Deque::iterator tempIter = static_cast<Iterator>(cbegin());
+	while (tempIter != cend())
 	{
 		size++;
 		tempIter++;
@@ -107,35 +83,35 @@ void Deque::resize(size_t newSize)
 	}
 }
 
-bool Deque::empty() { return _head->_GetNextNode() == _rear; }
+bool Deque::empty() const	{ return _head->_GetNextNode() == _rear; }
 
 //void Deque::shrink_to_fit() {}
 
 Deque::value_type Deque::operator[](size_t count)
 {
-	Node *cur = _head;
+	Node* cur = _head;
 
 	for (size_t i = 0; i < count; i++)
 		cur = cur->_GetNextNode();
+
 	return cur->_GetValue();
 }
 
 Deque::reference Deque::at(size_t n)
 {
-	Node *cur = _head;
+	Node* cur = _head;
 	for (size_t i = 0; i < n; i++)
-	{
 		cur = cur->_GetNextNode();
-	}
+
 	return cur->_GetAddr();
 }
 
-Deque::value_type Deque::front() { return _head->_GetNextNode()->_GetValue(); }
+Deque::value_type Deque::front() const { return _head->_GetNextNode()->_GetValue(); }
 
-Deque::value_type Deque::back() { return _rear->_GetPrevNode()->_GetValue(); }
+Deque::value_type Deque::back() const  { return _rear->_GetPrevNode()->_GetValue(); }
 
 
-void Deque::assign(Iterator first, Iterator last)
+void Deque::assign(const Iterator& first, const Iterator& last)
 {
 	clear();
 
@@ -145,7 +121,7 @@ void Deque::assign(Iterator first, Iterator last)
 
 void Deque::push_back(Deque::value_type val)
 {
-	Node *newNode = new Node();
+	Node* newNode = static_cast<Node*>(new Node());
 	newNode->_SetValue(val);
 
 	newNode->_SetNextNode(_rear->_GetPrevNode()->_GetNextNode());
@@ -156,7 +132,7 @@ void Deque::push_back(Deque::value_type val)
 
 void Deque::push_front(Deque::value_type val)
 {
-	Node *newNode = new Node();
+	Node* newNode = static_cast<Node*>(new Node());
 	newNode->_SetValue(val);
 
 	newNode->_SetNextNode(_head->_GetNextNode());
@@ -169,43 +145,47 @@ void Deque::pop_back()
 {
 	if (empty()) return;
 
-	Node *cur = _rear->_GetPrevNode();
+	Node* cur = _rear->_GetPrevNode();
 	cur->_GetNextNode()->_SetPrevNode(cur->_GetPrevNode());
 	cur->_GetPrevNode()->_SetNextNode(cur->_GetNextNode());
 	cur->_SetPrevNode(nullptr);
 	cur->_SetNextNode(nullptr);
+	
 	delete cur;
 }
 
 void Deque::pop_front()
 {
 	if (empty()) return;
-	Node *cur = _head->_GetNextNode();
+
+	Node* cur = _head->_GetNextNode();
 	cur->_GetNextNode()->_SetPrevNode(cur->_GetPrevNode());
 	cur->_GetPrevNode()->_SetNextNode(cur->_GetNextNode());
 	cur->_SetPrevNode(nullptr);
 	cur->_SetNextNode(nullptr);
+	
 	delete cur;
 }
 
-Deque::iterator Deque::insert(const_iterator position, const value_type& val)
+Deque::iterator Deque::insert(const_iterator& position, value_type val)
 {
 	Iterator pos = position;
-	Node *newNode = new Node();
+	Node* newNode = static_cast<Node*>(new Node());
 	newNode->_SetValue(val);
 	newNode->_SetNextNode(pos._GetNode());
 	newNode->_SetPrevNode(pos._GetNode()->_GetPrevNode());
 	pos._GetNode()->_SetPrevNode(newNode);
 	pos._GetNode()->_GetPrevNode()->_SetNextNode(newNode);
 
-	return newNode;
+	return *newNode;
 }
 
-Deque::iterator Deque::erase(Deque::const_iterator position)
+Deque::iterator Deque::erase(Deque::const_iterator& position)
 {
 	Iterator pos = position;
-	Node *tempNode = pos._GetNode();
-	iterator returnIter = pos._GetNode()->_GetNextNode();
+	Node* tempNode = pos._GetNode();
+	Iterator returnIter = static_cast<Iterator>(*pos._GetNode()->_GetNextNode());
+
 	pos._GetNode()->_GetNextNode()->_SetPrevNode(pos._GetNode()->_GetPrevNode());
 	pos._GetNode()->_GetPrevNode()->_SetNextNode(pos._GetNode()->_GetNextNode());
 	tempNode->_SetNextNode(nullptr);
@@ -215,34 +195,16 @@ Deque::iterator Deque::erase(Deque::const_iterator position)
 	return returnIter;
 }
 
-void Deque::swap(Deque &deque)
+void Deque::swap(Deque& deque)
 {
-	Deque tempDeque;
-	size_t copySize = size();
-	Node *cur = _head;
-	for (size_t i = 0; i < copySize; i++)
-	{
-		tempDeque.push_back(cur->_GetValue());
-		cur++;
-	}
-	clear();
+	Node* tempHead = deque._head;
+	Node* tempRear = deque._rear;
 
-	copySize = deque.size();
-	cur = deque._head;
-	for (size_t i = 0; i < copySize; i++)
-	{
-		push_back(cur->_GetValue());
-		cur++;
-	}
-	deque.clear();
+	deque._head = _head;
+	deque._rear = _rear;
 
-	copySize = tempDeque.size();
-	cur = tempDeque._head;
-	for (size_t i = 0; i < copySize; i++)
-	{
-		deque.push_back(cur->_GetValue());
-		cur++;
-	}
+	_head = tempHead;
+	_rear = tempRear;
 }
 
 void Deque::clear()
@@ -252,22 +214,22 @@ void Deque::clear()
 		pop_back();
 }
 
-Deque::iterator Deque::emplace(Deque::const_iterator position, Deque::value_type val)
+Deque::iterator Deque::emplace(Deque::const_iterator& position, Deque::value_type val)
 {
 	iterator pos = position;
-	Node *newNode = new Node();
+	Node* newNode = static_cast<Node*>(new Node());
 	newNode->_SetValue(val);
 	newNode->_SetNextNode(pos._GetNode());
 	newNode->_SetPrevNode(pos._GetNode()->_GetPrevNode());
 	pos._GetNode()->_SetPrevNode(newNode);
 	pos._GetNode()->_GetPrevNode()->_SetNextNode(newNode);
 
-	return newNode;
+	return static_cast<iterator>(*newNode);
 }
 
 Deque::iterator Deque::emplace_back(Deque::value_type val)
 {
-	Node *newNode = new Node();
+	Node *newNode = static_cast<Node*>(new Node());
 	newNode->_SetValue(val);
 
 	newNode->_SetNextNode(_head->_GetNextNode());
@@ -275,12 +237,12 @@ Deque::iterator Deque::emplace_back(Deque::value_type val)
 	_head->_GetNextNode()->_SetPrevNode(newNode);
 	_head->_SetNextNode(newNode);
 
-	return newNode;
+	return static_cast<iterator>(*newNode);
 }
 
 Deque::iterator Deque::emplace_front(Deque::value_type val)
 {
-	Node *newNode = new Node();
+	Node *newNode = static_cast<Node*>(new Node());
 	newNode->_SetValue(val);
 
 	newNode->_SetNextNode(_head->_GetNextNode());
@@ -288,6 +250,6 @@ Deque::iterator Deque::emplace_front(Deque::value_type val)
 	_head->_GetNextNode()->_SetPrevNode(newNode);
 	_head->_SetNextNode(newNode);
 
-	return newNode;
+	return static_cast<iterator>(*newNode);
 }
 

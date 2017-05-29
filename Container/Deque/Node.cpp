@@ -6,8 +6,8 @@ Node::~Node(){}
 
 Node::value_type Node::_GetValue() const { return _value; }
 Node::value_type& Node::_GetAddr() { return this->_value; }
-Node *Node::_GetPrevNode() const { return _prevNode; }
-Node *Node::_GetNextNode() const { return _nextNode; }
+Node* Node::_GetPrevNode() { return _prevNode; }
+Node* Node::_GetNextNode() { return _nextNode; }
 
 void Node::_SetValue(Node::value_type value) { _value = value; }
 void Node::_SetPrevNode(const Node *ptr) { _prevNode = const_cast<Node*>(ptr); }
@@ -31,9 +31,17 @@ Node& Node::operator-(int value)
 	return *this;
 }
 
-Node& Node::operator+=(int value) { _value += _value; return *this; }
+Node& Node::operator+=(int value) 
+{
+	_value += _value; 
+	return *this; 
+}
 
-Node& Node::operator-=(int value) { _value -= _value; return *this; }
+Node& Node::operator-=(int value)
+{
+	_value -= _value;
+	return *this;
+}
 
 bool Node::operator==(const Node& node) const { return _value == node._value&&_nextNode == node._nextNode&&_prevNode == node._prevNode; }
 

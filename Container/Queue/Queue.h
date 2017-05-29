@@ -2,9 +2,13 @@
 #include"Node.h"
 class Queue
 {
+private:
+	Node* _front;
+	Node* _rear;
+
 public:
 	Queue();
-	Queue(Queue &queue);
+	Queue(const Queue& queue);
 	~Queue();
 
 public:
@@ -14,19 +18,15 @@ public:
 	typedef size_t size_type;
 
 public:
-	void operator=(Queue &queue);
-	bool empty();
-	size_type size();
+	Queue& operator=(const Queue& queue);
+	bool empty() const;
+	size_type size() const;
 	reference front();
 	reference back();
 	void push(value_type val);
 	void emplace(value_type val);
 	void pop();
-	void swap(Queue &queue);
-
-private:
-	Node *_front;
-	Node *_rear;
+	void swap(Queue& queue);
 };
 
 
