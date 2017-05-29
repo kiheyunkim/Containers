@@ -7,12 +7,12 @@ private:
 	Node* _root;
 		
 private:
-	bool _isThere(const int _value) const;
-
+	bool _isThere(int _value) const;
+	Node* _findReplaceNode(const Node* node) const;
 public:
 	BinarySearchTree();
 	~BinarySearchTree();
-	void Push(const int value);
-	Node* Pop(const int value);
+	void Push(int value);
+	Node* Pop(int value);
 };
 

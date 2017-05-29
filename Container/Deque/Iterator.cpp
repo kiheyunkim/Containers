@@ -45,7 +45,7 @@ Iterator& Iterator::operator-=(int count)
 	return *this;
 }
 
-Iterator::value_type& Iterator::operator[](size_t index)
+Iterator::ValueType& Iterator::operator[](size_t index)
 {
 	Node *cur = _target;
 	for (size_t i = 0; i < index; i++)
@@ -67,4 +67,4 @@ bool Iterator::operator<=(const Iterator& iter) const { return _target->_GetValu
 bool Iterator::operator>(const Iterator& iter) const { return _target->_GetValue() > const_cast<Iterator&>(iter)._target->_GetValue();}
 bool Iterator::operator>=(const Iterator& iter) const { return _target->_GetValue() >= const_cast<Iterator&>(iter)._target->_GetValue(); }
 
-Iterator::value_type& Iterator::operator*() const { return _target->_GetAddr(); }
+Iterator::ValueType& Iterator::operator*() const { return _target->_GetAddr(); }

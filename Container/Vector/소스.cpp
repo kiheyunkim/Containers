@@ -2,16 +2,6 @@
 #include<vector>
 void main()
 {
-	int value = 10;
-	const int* cp = &value;
-	int * const * pcp;
-
-	const int value2 = 20;
-
-	int value3 = value2;
-
-
-
 	Vector vec;
 	vec.PushBack(2);
 	vec.PushBack(3);

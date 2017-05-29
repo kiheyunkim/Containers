@@ -7,8 +7,11 @@
 
 class Vector
 {
+private:
+	typedef Node* NodePtr;
+
 public:
-	Node** _dataArray;
+	NodePtr* _dataArray;
 
 private:
 	unsigned int _headIndex;

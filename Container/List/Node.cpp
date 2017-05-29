@@ -5,13 +5,13 @@ Node::Node() :_value(0), _prevNode(nullptr), _nextNode(nullptr) {}
 Node::Node(const Node& node) { memcpy(this, &node, sizeof(Node)); }
 Node::~Node(){}
 
-Node::value_type Node::_GetValue() const { return _value; }
-Node::value_type& Node::_GetAddr() { return _value; }
+Node::ValueType Node::_GetValue() const { return _value; }
+Node::ValueType& Node::_GetAddr() { return _value; }
 
 Node* Node::_GetPrevNode() { return _prevNode; }
 Node* Node::_GetNextNode() { return _nextNode; }
 
-void Node::_SetValue(Node::value_type value) { _value = value; }
+void Node::_SetValue(Node::ValueType value) { _value = value; }
 void Node::_SetPrevNode(const Node* ptr) { _prevNode = const_cast<Node*>(ptr); }
 void Node::_SetNextNode(const Node* ptr) { _nextNode = const_cast<Node*>(ptr); }
 

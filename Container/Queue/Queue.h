@@ -12,21 +12,21 @@ public:
 	~Queue();
 
 public:
-	typedef int value_type;
-	typedef value_type& reference;
-	typedef const value_type& const_reference;
-	typedef size_t size_type;
+	typedef int ValueType;
+	typedef ValueType& Reference;
+	typedef const ValueType& ConstReference;
+	typedef size_t SizeType;
 
 public:
 	Queue& operator=(const Queue& queue);
-	bool empty() const;
-	size_type size() const;
-	reference front();
-	reference back();
-	void push(value_type val);
-	void emplace(value_type val);
-	void pop();
-	void swap(Queue& queue);
+	bool Empty() const;
+	SizeType Size() const;
+	Reference Front();
+	Reference Back();
+	void Push(ValueType val);
+	void Emplace(ValueType val);
+	void Pop();
+	void Swap(Queue& queue);
 };
 
 

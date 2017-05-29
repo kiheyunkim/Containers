@@ -6,12 +6,12 @@ Queue::Queue() :_front(nullptr), _rear(nullptr) {}
 
 Queue::Queue(const Queue& queue) : _front(nullptr), _rear(nullptr)
 {
-	size_t copySize = queue.size();
+	Queue::SizeType copySize = queue.Size();
 	Node* cur = queue._front;
 
-	for (size_t index = 0; index < copySize; index++)
+	for (Queue::SizeType index = 0; index < copySize; index++)
 	{
-		push(cur->_GetValue());
+		Push(cur->_GetValue());
 		cur = cur->_GetNextNode();
 	}
 }
@@ -20,25 +20,25 @@ Queue::~Queue() {}
 
 Queue& Queue::operator=(const Queue& queue)
 {
-	while (empty()) pop();
+	while (Empty()) Pop();
 
-	size_t copySize = queue.size();
+	Queue::SizeType copySize = queue.Size();
 	Node* cur = queue._front;
 
-	for (size_t index = 0; index < copySize; index++)
+	for (Queue::SizeType index = 0; index < copySize; index++)
 	{
-		push(cur->_GetValue());
+		Push(cur->_GetValue());
 		cur = cur->_GetNextNode();
 	}
 
 	return *this;
 }
 
-bool Queue::empty() const { return _front == nullptr&&_rear == nullptr; }
+bool Queue::Empty() const { return _front == nullptr&&_rear == nullptr; }
 
-Queue::size_type Queue::size() const
+Queue::SizeType Queue::Size() const
 {
-	if (empty()) return 0;
+	if (Empty()) return 0;
 	Node* cur = _front;
 	size_t size = 1;
 
@@ -51,12 +51,13 @@ Queue::size_type Queue::size() const
 	return size;
 }
 
-Queue::reference Queue::front() { return _front->_GetAddr(); }
-Queue::reference Queue::back() { return _rear->_GetAddr(); }
+Queue::Reference Queue::Front() { return _front->_GetAddr(); }
 
-void Queue::push(Queue::value_type val)
+Queue::Reference Queue::Back() { return _rear->_GetAddr(); }
+
+void Queue::Push(Queue::ValueType val)
 {
-	if (empty())
+	if (Empty())
 	{
 		Node* newNode = static_cast<Node*>(new Node());
 		newNode->_SetValue(val);
@@ -71,11 +72,11 @@ void Queue::push(Queue::value_type val)
 	_rear = newNode;
 }
 
-void Queue::emplace(Queue::value_type val) 
+void Queue::Emplace(Queue::ValueType val) 
 {
-	if (empty())
+	if (Empty())
 	{
-		push(val);
+		Push(val);
 		return;
 	}
 	Node* newNode = static_cast<Node*>(new Node());
@@ -84,9 +85,9 @@ void Queue::emplace(Queue::value_type val)
 	_rear = newNode;
 }
 
-void Queue::pop()
+void Queue::Pop()
 {
-	if (empty()) return;
+	if (Empty()) return;
 	if (_front == _rear)
 	{
 		delete(_front);
@@ -101,7 +102,7 @@ void Queue::pop()
 	delete(temp);
 }
 
-void Queue::swap(Queue& queue)
+void Queue::Swap(Queue& queue)
 {
 
 	Node* frontTemp = queue._front;

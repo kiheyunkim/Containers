@@ -2,12 +2,12 @@
 #include "Iterator.h"
 
 Iterator::Iterator() :_target(nullptr) {}
-Iterator::Iterator(Node* const& node) : _target(const_cast<Node**>(&node))  {}
+Iterator::Iterator(const Iterator::NodePtr& node) : _target(const_cast<Iterator::NodePtr*>(&node))  {}
 Iterator::Iterator(const Iterator& iter) { memcpy(this, &iter, sizeof(Iterator)); }
 Iterator::~Iterator() {}
 
-Node* Iterator::_GetNode() { return *_target; }
-Node*& Iterator::_GetAddr() { return *_target; }
+Iterator::NodePtr Iterator::_GetNode() { return *_target; }
+Iterator::NodePtr& Iterator::_GetAddr() { return *_target; }
 
 
 Iterator& Iterator::operator++(int)
@@ -73,9 +73,9 @@ Iterator& Iterator::operator=(const Iterator& iter)
 	return *this; 
 }
 
-Iterator& Iterator::operator=(Node* const& node)
+Iterator& Iterator::operator=(const Iterator::NodePtr& node)
 {
-	_target = const_cast<Node**>(&node);
+	_target = const_cast<Iterator::NodePtr*>(&node);
 	return *this;
 }
 
@@ -83,9 +83,9 @@ Iterator& Iterator::operator=(Node* const& node)
 bool Iterator::operator<(const Iterator& iter) const { return (*_target)->_GetValue() < (*_target)->_GetValue(); }
 bool Iterator::operator<=(const Iterator& iter) const { return (*_target)->_GetValue() <= (*_target)->_GetValue(); }
 bool Iterator::operator>(const Iterator& iter)  const { return (*_target)->_GetValue() > (*_target)->_GetValue(); }
-bool Iterator::operator>=(const Iterator& iter) const{ return (*_target)->_GetValue() >= (*_target)->_GetValue(); }
+bool Iterator::operator>=(const Iterator& iter) const { return (*_target)->_GetValue() >= (*_target)->_GetValue(); }
 bool Iterator::operator!=(const Iterator& iter) const { return _target != iter._target; }
 bool Iterator::operator==(const Iterator& iter) const { return _target == iter._target; }
 
 int& Iterator::operator*() { return (*_target)->_GetAddr(); }
-Node* Iterator::operator->() { return *_target; }
+Iterator::NodePtr Iterator::operator->() { return *_target; }

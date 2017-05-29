@@ -4,21 +4,24 @@
 class Iterator
 {
 private:
-	Node** _target;
+	typedef Node* NodePtr;
 
 private:
-	Iterator& operator=(Node* const& node);
+	NodePtr* _target;
+
+private:
+	Iterator& operator=(NodePtr const& node);
 
 public:
-	Node* _GetNode();
-	Node*&	_GetAddr();
+	NodePtr  _GetNode();
+	NodePtr& _GetAddr();
 public:
 	Iterator();
-	Iterator(Node* const& node);
+	Iterator(NodePtr const& node);
 	Iterator(const Iterator& iter);
 	~Iterator();
 
-	Iterator& operator++(int);
+	Iterator& operator++(int); 
 	Iterator& operator+(int count);
 	Iterator& operator+=(int count);
 	Iterator& operator--();
@@ -33,7 +36,7 @@ public:
 	bool operator==(const Iterator& iter)const;
 	bool operator!=(const Iterator& iter)const;
 	int& operator*();
-	Node* operator->();
+	Iterator::NodePtr operator->();
 
 	friend std::ostream& operator<<(std::ostream& os, const Iterator& iter)
 	{
@@ -44,8 +47,9 @@ public:
 
 	friend std::istream& operator >> (std::istream& is, const Iterator& iter)
 	{
-		int value = (*(iter._target))->_GetValue();
+		int value;
 		is >> value;
+		(*(iter._target))->_SetValue(value);
 		return is;
 	}
 };

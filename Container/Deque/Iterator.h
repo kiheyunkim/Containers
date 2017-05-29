@@ -8,7 +8,7 @@ private:
 	Node *_target;
 
 public:
-	typedef int value_type;
+	typedef int ValueType;
 
 public:
 	Node* _GetNode() { return _target; }
@@ -25,7 +25,7 @@ public:
 	Iterator& operator-(int count);
 	Iterator& operator+=(int count);
 	Iterator& operator-=(int count);
-	value_type& operator[](size_t index);
+	ValueType& operator[](size_t index);
 
 	Iterator& operator=(const Iterator& iter);
 	bool operator==(const Iterator& iter) const;
@@ -34,19 +34,20 @@ public:
 	bool operator<=(const Iterator& iter) const;
 	bool operator>(const Iterator& iter) const;
 	bool operator>=(const Iterator& iter) const;
-	value_type& operator*() const;
+	ValueType& operator*() const;
 	
 	friend std::ostream& operator<<(std::ostream& os, const Iterator& iter)
 	{
-		Iterator::value_type value = iter._target->_GetValue();
+		Iterator::ValueType value = iter._target->_GetValue();
 		os << value;
 		return os;
 	}
 
 	friend std::istream& operator >> (std::istream& is, const Iterator& iter)
 	{
-		Iterator::value_type value = iter._target->_GetValue();
+		Iterator::ValueType value;
 		is >> value;
+		iter._target->_SetValue(value);
 		return is;
 	}
 

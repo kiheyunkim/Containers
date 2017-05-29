@@ -28,5 +28,5 @@ bool Iterator::operator==(const Iterator& iter) const { return _target == const_
 
 bool Iterator::operator!=(const Iterator& iter) const { return _target != const_cast<Iterator&>(iter)._GetNode(); }
 
-Iterator::valueType Iterator::operator*() const { return _target->_GetValue(); }
+Iterator::ValueType Iterator::operator*() const { return _target->_GetValue(); }
 

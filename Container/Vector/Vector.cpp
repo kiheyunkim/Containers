@@ -11,12 +11,12 @@ Vector::~Vector()
 
 Vector::Iterator Vector::Begin() const { return static_cast<Iterator>(_dataArray[_headIndex]); }
 Vector::Iterator Vector::End() const { return  static_cast<Iterator>(_dataArray[_tailIndex]); }
-Vector::reverseIterator Vector::RBegin() const { return &_dataArray[_tailIndex]; }
-Vector::reverseIterator Vector::REnd() const { return &_dataArray[_headIndex]; }
-Vector::constIterator Vector::CBegin() const {return _dataArray[_headIndex];}
-Vector::constIterator Vector::CEnd() const {return _dataArray[_tailIndex];}
-Vector::constReverseIterator Vector::CrBegin() const {return _dataArray[_tailIndex];}
-Vector::constReverseIterator Vector::CrEnd() const {return _dataArray[_headIndex];}
+Vector::reverseIterator Vector::RBegin() const { return static_cast<Reverse_Iterator>(_dataArray[_tailIndex]); }
+Vector::reverseIterator Vector::REnd() const { return static_cast<Reverse_Iterator>(_dataArray[_headIndex]); }
+Vector::constIterator Vector::CBegin() const { return static_cast<constIterator>(_dataArray[_headIndex]); }
+Vector::constIterator Vector::CEnd() const { return static_cast<constIterator>(_dataArray[_tailIndex]); }
+Vector::constReverseIterator Vector::CrBegin() const { return static_cast<constReverseIterator>(_dataArray[_tailIndex]); }
+Vector::constReverseIterator Vector::CrEnd() const { return static_cast<constReverseIterator>(_dataArray[_headIndex]); }
 Vector::sizeType Vector::Size() const { return _tailIndex - _headIndex - 1; }
 Vector::sizeType Vector::MaxSize() const { return _arraySize - 2; }
 Vector::sizeType Vector::capacity() const { return _arraySize; }
@@ -25,8 +25,8 @@ bool Vector::Empty() const { return _headIndex == _tailIndex; }
 
 void Vector::Reserve()
 {
-	Node** tempArray = new Node*[_arraySize];
-	memcpy(tempArray, _dataArray, _arraySize * sizeof(Node*));
+	NodePtr* tempArray = static_cast<NodePtr*>(new NodePtr[_arraySize]);
+	memcpy(tempArray, _dataArray, _arraySize * sizeof(NodePtr));
 
 	for (size_t index = _headIndex ; index <= _tailIndex; index++)
 		_dataArray[index] = tempArray[_tailIndex - index];
@@ -57,22 +57,22 @@ void Vector::PushBack(int value)
 {
 	if (_tailIndex % ALLOC_SIZE == ALLOC_SIZE - 2 || _dataArray == nullptr)
 	{
-		Node** tempArray = new Node*[_arraySize + ALLOC_SIZE];
+		NodePtr* tempArray = static_cast<NodePtr*>(new NodePtr[_arraySize + ALLOC_SIZE]);
 		_arraySize += ALLOC_SIZE;
-		memset(tempArray, 0, _arraySize * sizeof(Node *));
+		memset(tempArray, 0, _arraySize * sizeof(NodePtr));
 
 		if (_dataArray == nullptr)
 		{
 			_dataArray = tempArray;
-			Node* leftNode = new Node(true);
-			Node* rightNode = new Node(true);
+			NodePtr leftNode = static_cast<NodePtr>(new Node(true));
+			NodePtr rightNode = static_cast<NodePtr>(new Node(true));
 
 			_dataArray[0] = leftNode;
 			_dataArray[1] = rightNode;
 		}
 		else
 		{
-			memcpy(tempArray, _dataArray, (_arraySize - ALLOC_SIZE) * sizeof(Node *));
+			memcpy(tempArray, _dataArray, (_arraySize - ALLOC_SIZE) * sizeof(NodePtr));
 			delete[] _dataArray;
 			_dataArray = tempArray;
 		}
@@ -80,7 +80,7 @@ void Vector::PushBack(int value)
 
 	_dataArray[_tailIndex + 1] = _dataArray[_tailIndex];			//secure space
 
-	Node* newNode = new Node();										//Create new Node
+	NodePtr newNode = static_cast<NodePtr>(new Node());										//Create new Node
 	newNode->_SetValue(value);
 	_dataArray[_tailIndex] = newNode;
 
@@ -91,9 +91,9 @@ void Vector::PopBack()
 {
 	if (Empty()) return;
 
-	Node* deleteNode = _dataArray[_tailIndex - 1];
+	NodePtr deleteNode = _dataArray[_tailIndex - 1];
 	_dataArray[_tailIndex - 1] = _dataArray[_tailIndex];
-	memset(&_dataArray[_tailIndex], 0, sizeof(Node*));
+	memset(&_dataArray[_tailIndex], 0, sizeof(NodePtr));
 	_tailIndex -= 1;
 
 	delete deleteNode;
@@ -102,10 +102,10 @@ void Vector::PopBack()
 	{
 		if (Empty()) return;
 
-		Node** tempArray = new Node*[_arraySize - ALLOC_SIZE];
+		NodePtr* tempArray = static_cast<NodePtr*>(new NodePtr[_arraySize - ALLOC_SIZE]);
 		_arraySize -= ALLOC_SIZE;
-		memset(tempArray, 0, _arraySize * sizeof(Node*));
-		memcpy(tempArray, _dataArray, _arraySize * sizeof(Node*));
+		memset(tempArray, 0, _arraySize * sizeof(NodePtr));
+		memcpy(tempArray, _dataArray, _arraySize * sizeof(NodePtr));
 	}
 }
 
@@ -113,22 +113,22 @@ Iterator Vector::insert(const Iterator& position, const int value)
 {
 	if (_tailIndex % ALLOC_SIZE == ALLOC_SIZE - 2 || _dataArray == nullptr)
 	{
-		Node** tempArray = new Node*[_arraySize + ALLOC_SIZE];
+		NodePtr* tempArray = static_cast<NodePtr*>(new NodePtr[_arraySize + ALLOC_SIZE]);
 		_arraySize += ALLOC_SIZE;
-		memset(tempArray, 0, _arraySize * sizeof(Node *));
+		memset(tempArray, 0, _arraySize * sizeof(NodePtr));
 
 		if (_dataArray == nullptr)
 		{
 			_dataArray = tempArray;
-			Node* leftNode = new Node(true);
-			Node* rightNode = new Node(true);
+			NodePtr leftNode = static_cast<NodePtr>(new Node(true));
+			NodePtr rightNode = static_cast<NodePtr>(new Node(true));
 
 			_dataArray[0] = leftNode;
 			_dataArray[1] = rightNode;
 		}
 		else
 		{
-			memcpy(tempArray, _dataArray, (_arraySize - ALLOC_SIZE) * sizeof(Node *));
+			memcpy(tempArray, _dataArray, (_arraySize - ALLOC_SIZE) * sizeof(NodePtr));
 			delete[] _dataArray;
 			_dataArray = tempArray;
 		}
@@ -149,7 +149,7 @@ Iterator Vector::insert(const Iterator& position, const int value)
 		_dataArray[_tailIndex + 1 - i] = _dataArray[_tailIndex - i];
 
 
-	Node* newNode = new Node();													//Create new Node
+	NodePtr newNode = static_cast<NodePtr>(new Node());													//Create new Node
 	newNode->_SetValue(value);
 	_dataArray[insertIndex] = newNode;
 
@@ -170,12 +170,12 @@ void Vector::erase(const Iterator& position)
 		if (const_cast<Iterator&>(position)._GetNode() == _dataArray[deleteIndex]) break;
 	}
 
-	Node* deleteNode = _dataArray[deleteIndex];
+	NodePtr deleteNode = _dataArray[deleteIndex];
 	size_t moveCount = _tailIndex - deleteIndex + 1;
 
 	for (size_t i = deleteIndex; i < _tailIndex; i++)
 		_dataArray[i] = _dataArray[i + 1];
-	memset(&_dataArray[_tailIndex], 0, sizeof(Node*));
+	memset(&_dataArray[_tailIndex], 0, sizeof(NodePtr));
 	delete deleteNode;
 
 	_tailIndex -= 1;
@@ -184,10 +184,10 @@ void Vector::erase(const Iterator& position)
 	{
 		if (Empty()) return;
 
-		Node** tempArray = new Node*[_arraySize - ALLOC_SIZE];
+		NodePtr* tempArray = static_cast<NodePtr*>(new NodePtr[_arraySize - ALLOC_SIZE]);
 		_arraySize -= ALLOC_SIZE;
-		memset(tempArray, 0, _arraySize * sizeof(Node*));
-		memcpy(tempArray, _dataArray, _arraySize * sizeof(Node*));
+		memset(tempArray, 0, _arraySize * sizeof(NodePtr));
+		memcpy(tempArray, _dataArray, _arraySize * sizeof(NodePtr));
 	}
 }
 

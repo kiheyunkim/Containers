@@ -6,22 +6,22 @@ private:
 	Node *_top;
 
 public:
-	typedef int value_type;
-	typedef value_type& reference;
-	typedef const value_type& const_reference;
-	typedef size_t size_type;
+	typedef int ValueType;
+	typedef ValueType& Reference;
+	typedef const ValueType& ConstReference;
+	typedef size_t SizeType;
 
 public:
 	Stack();
 	Stack(const Stack& stack);
 	~Stack();
 	void operator=(const Stack& stack);
-	bool empty() const;
-	size_type size() const;
-	reference top();
-	void push(value_type val);
-	void emplace(value_type val);
-	void pop();
-	void swap(Stack &stack);
+	bool Empty() const;
+	SizeType Size() const;
+	Reference Top();
+	void Push(ValueType val);
+	void Emplace(ValueType val);
+	void Pop();
+	void Swap(Stack &stack);
 };
 

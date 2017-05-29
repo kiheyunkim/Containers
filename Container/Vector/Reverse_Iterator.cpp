@@ -1,11 +1,11 @@
 #include "Reverse_Iterator.h"
 
 Reverse_Iterator::Reverse_Iterator() :_target(nullptr) {}
-Reverse_Iterator::Reverse_Iterator(const Node& node) { *_target = const_cast<Node*>(&node); }
+Reverse_Iterator::Reverse_Iterator(const Reverse_Iterator::NodePtr& node) { *_target = const_cast<Reverse_Iterator::NodePtr&>(node); }
 Reverse_Iterator::~Reverse_Iterator() {}
 
-Node* Reverse_Iterator::_GetNode() { return *_target; }
-Node*& Reverse_Iterator::_GetAddr() { return *_target; }
+Reverse_Iterator::NodePtr Reverse_Iterator::_GetNode() { return *_target; }
+Reverse_Iterator::NodePtr& Reverse_Iterator::_GetAddr() { return *_target; }
 
 
 Reverse_Iterator& Reverse_Iterator::operator++(int) 
@@ -77,4 +77,4 @@ bool Reverse_Iterator::operator>=(const Reverse_Iterator& iter)const { return (*
 bool Reverse_Iterator::operator!=(const Reverse_Iterator& iter) const { return _target != iter._target; }
 bool Reverse_Iterator::operator==(const Reverse_Iterator& iter) const { return _target == iter._target; }
 int& Reverse_Iterator::operator*() const { return (*_target)->_GetAddr(); }
-Node* Reverse_Iterator::operator->() { return *_target; }
+Reverse_Iterator::NodePtr Reverse_Iterator::operator->() { return *_target; }

@@ -1,6 +1,6 @@
 #pragma once
 #include"Iterator.h"
-#include"Reverse_Iterator.h"
+#include"ReverseIterator.h"
 #include"Node.h"
 
 class List
@@ -9,20 +9,21 @@ private:
 	Node* _head;
 	Node* _tail;
 
-private:
-	void _swap(int &x1, int &x2);
 
 public:
-	typedef int valueType;
-	typedef valueType& reference;
-	typedef const valueType& const_reference;
-	typedef valueType* pointer;
-	typedef const valueType* const_pointer;
-	typedef Iterator iterator;
-	typedef const Iterator const_iterator;
-	typedef Reverse_Iterator reverse_iterator;
-	typedef const Reverse_Iterator const_reverse_iterator;
-	typedef size_t size_type;
+	typedef int ValueType;
+	typedef ValueType& Reference;
+	typedef const ValueType& ConstReference;
+	typedef ValueType* Pointer;
+	typedef const ValueType* ConstPointer;
+	typedef Iterator Iterator;
+	typedef const Iterator ConstIterator;
+	typedef ReverseIterator ReverseIterator;
+	typedef const ReverseIterator ConstReverseIterator;
+	typedef size_t SizeType;
+
+private:
+	void _swap(ValueType &x1, ValueType &x2);
 
 public:
 	List();
@@ -31,44 +32,44 @@ public:
 	List& operator=(const List& targetList);
 
 	//Iterator
-	iterator begin();
-	iterator end();
-	reverse_iterator rbegin();
-	reverse_iterator rend();
-	const_iterator cbegin() const;
-	const_iterator cend() const;
-	const_reverse_iterator crbegin() const;
-	const_reverse_iterator crend() const;
+	Iterator Begin();
+	Iterator End();
+	ReverseIterator ReverseBegin();
+	ReverseIterator ReverseEnd();
+	ConstIterator ConstBegin() const;
+	ConstIterator ConstEnd() const;
+	ConstReverseIterator ConstReverseBegin() const;
+	ConstReverseIterator ConstReverseEnd() const;
 
 	//Capacity
-	bool empty() const;
-	size_type size() const;
-	size_type max_size();
+	bool Empty() const;
+	SizeType Size() const;
+	SizeType MaxSize();
 
 	//Element access
-	reference front();
-	reference back();
+	Reference Front();
+	Reference Back();
 
 	//Modifiers
-	void assign(size_type n, valueType value);
-	void emplace_front(valueType value);
-	void push_front(valueType value);
-	void pop_front();
-	void emplace_back(valueType value);
-	void push_back(valueType val);
-	void pop_back();
-	iterator insert(const iterator& pos, valueType value);
-	iterator erase(const Iterator& pos);
-	void swap(List &list);
-	void resize(size_t size);
-	void clear();
+	void Assign(SizeType n, ValueType value);
+	void EmplaceFront(ValueType value);
+	void PushFront(ValueType value);
+	void PopFront();
+	void EmplaceBack(ValueType value);
+	void PushBack(ValueType val);
+	void PopBack();
+	Iterator Insert(const Iterator& pos, ValueType value);
+	Iterator Erase(const Iterator& pos);
+	void Swap(List &list);
+	void Resize(SizeType size);
+	void Clear();
 
 	//Operations
-	void splice(const Iterator& iter, List& list);
-	void remove(const int val);
-	void remove_if(bool(*compare)(const int&));
-	void unique();
-	void merge(List& list);
-	void sort();
-	void reverse();
+	void Splice(const Iterator& iter, List& list);
+	void Remove(ValueType val);
+	void RemoveIf(bool(*compare)(int));
+	void Unique();
+	void Merge(List& list);
+	void Sort();
+	void Reverse();
 };

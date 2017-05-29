@@ -1,9 +1,36 @@
 #include "BinarySearchTree.h"
-#include<iostream>
 #include "Node.h"
+#include<iostream>
+
+bool BinarySearchTree::_isThere(int _value) const
+{
+	if (_root == nullptr) return false;
+
+	Node* cur = _root;
+	while (cur != nullptr)
+	{
+		if (cur->_GetValue() == _value)	return true;
+	
+		if (cur->_GetValue() > _value)cur = cur->_GetLeftNode();
+		else cur = cur->_GetRightNode();
+	}
+
+	return false;
+}
+
+Node* BinarySearchTree::_findReplaceNode(const Node* cur) const
+{
+	Node *cur = const_cast<Node*>(cur);
+
+	if (cur->_GetLeftNode() == nullptr&&cur->_GetRightNode() == nullptr) return nullptr;
+
+	if(cur->_GetLeftNode())
+}
 
 
 BinarySearchTree::BinarySearchTree() :_root(nullptr) {}
+
+
 
 BinarySearchTree::~BinarySearchTree()
 {
@@ -12,23 +39,6 @@ BinarySearchTree::~BinarySearchTree()
 	std::cout << std::endl;
 }
 
-bool BinarySearchTree::_isThere(const int _value) const
-{
-	if (_root == nullptr) return false;
-
-	Node* cur = _root;
-	while (cur != nullptr)
-	{
-		if (cur->_GetValue() == _value)
-			return true;
-
-		if (cur->_GetValue() > _value)
-			cur = cur->_GetLeftNode();
-		else
-			cur = cur->_GetRightNode();
-	}
-	return false;
-}
 
 void BinarySearchTree::Push(const int _value)
 {

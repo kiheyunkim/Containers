@@ -5,7 +5,7 @@
 
 void print(List list)
 {
-	for (List::iterator iter = list.begin(); iter != list.end(); iter++)
+	for (List::Iterator iter = list.Begin(); iter != list.End(); iter++)
 		std::cout << *iter << " ";
 	std::cout << std::endl;
 }
@@ -15,29 +15,29 @@ void main()
 	
 	List list;
 	List list2;
-	list.push_front(3);
-	list.push_front(4);
-	list.push_front(2);
-	list.push_front(1);
+	list.PushFront(3);
+	list.PushFront(4);
+	list.PushFront(2);
+	list.PushFront(1);
 	print(list);
 
-	List::iterator iter = list.end();
+	List::Iterator iter = list.End();
 	std::cout << *iter;
 	
-	std::cout << list.size() << std::endl;
-	std::cout << *list.begin() << std::endl;
+	std::cout << list.Size() << std::endl;
+	std::cout << *list.Begin() << std::endl;
 
-	list2.push_back(10);
-	list2.push_back(20);
-	list2.push_back(30);
-	list2.push_back(30);
-	list2.push_back(30);
-	list2.push_back(30);
+	list2.PushBack(10);
+	list2.PushBack(20);
+	list2.PushBack(30);
+	list2.PushBack(30);
+	list2.PushBack(30);
+	list2.PushBack(30);
 	print(list2);
 
 
-	Iterator iterator = list.begin();
-	list.splice(list.begin(), &list2);
+	Iterator iterator = list.Begin();
+	list.Splice(list.Begin(), list2);
 	print(list2);
 	print(list);
 

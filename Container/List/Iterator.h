@@ -5,12 +5,11 @@
 class Iterator
 {
 private:
+	typedef int ValueType;
+
+private:
 	Node *_target;
 
-public:
-	typedef int valueType;
-	typedef valueType& reference;
-	
 public:
 	Node* _GetNode();
 
@@ -24,19 +23,20 @@ public:
 	Iterator& operator=(const Iterator& iter);
 	bool operator==(const Iterator& iter) const;
 	bool operator!=(const Iterator& iter) const;
-	valueType operator*() const;
+	ValueType operator*() const;
 	
 	friend std::ostream& operator<<(std::ostream& os, const Iterator& iter)
 	{
-		Iterator::valueType value = iter._target->_GetValue();
+		Iterator::ValueType value = iter._target->_GetValue();
 		os << value;
 		return os;
 	}
 
 	friend std::istream& operator >> (std::istream& is, const Iterator& iter)
 	{
-		Iterator::valueType value = iter._target->_GetValue();
+		Iterator::ValueType value;
 		is >> value;
+		iter._target->_SetValue(value);
 		return is;
 	}
 

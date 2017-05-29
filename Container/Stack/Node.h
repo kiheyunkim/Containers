@@ -3,21 +3,21 @@
 class Node
 {
 private:
-	int _value;
+	typedef int ValueType;
+
+private:
+	ValueType _value;
 	Node* _nextNode;
 	Node* _prevNode;
 
 public:
-	typedef int value_type;
-
-public:
 	Node();
 	~Node();
-	value_type _GetValue() const;
-	value_type& _GetAddr();
+	ValueType _GetValue() const;
+	ValueType& _GetAddr();
 	Node* _GetNextNode() const;
 	Node* _GetPrevNode() const;
-	void _SetValue(value_type value);
+	void _SetValue(ValueType value);
 	void _SetPrevNode(const Node* ptr);
 	void _SetNextNode(const Node* ptr);
 

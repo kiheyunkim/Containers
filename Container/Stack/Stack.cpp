@@ -5,19 +5,19 @@ Stack::Stack() :_top(nullptr) {}
 Stack::Stack(const Stack& stack) : _top(nullptr)
 {
 	Node* cur = stack._top;
-	size_t copySize = stack.size();
+	Stack::SizeType copySize = stack.Size();
 
-	Stack::value_type* copyArray = static_cast<value_type*>(new Stack::value_type[copySize]);
+	Stack::ValueType* copyArray = static_cast<Stack::ValueType*>(new Stack::ValueType[copySize]);
 
-	for (Stack::size_type i = copySize - 1; i >= 0; i--)
+	for (Stack::SizeType i = copySize - 1; i >= 0; i--)
 	{
 		copyArray[i] = cur->_GetValue();
 		if (!i) break;
 		cur = cur->_GetNextNode();
 	}
 
-	for (Stack::size_type i = 0; i < copySize; i++)
-		this->push(copyArray[i]);
+	for (Stack::SizeType i = 0; i < copySize; i++)
+		this->Push(copyArray[i]);
 
 	delete[] copyArray;
 }
@@ -26,32 +26,32 @@ Stack::~Stack() {}
 
 void Stack::operator=(const Stack& stack)
 {
-	while (!empty()) { pop(); }
+	while (!Empty()) { Pop(); }
 	Node* cur = stack._top;
 
-	Stack::size_type copySize = stack.size();
-	Stack::value_type* newArray = static_cast<value_type*>(new Stack::value_type[copySize]);
+	Stack::SizeType copySize = stack.Size();
+	Stack::ValueType* newArray = static_cast<Stack::ValueType*>(new Stack::ValueType[copySize]);
 
-	for (Stack::size_type i = copySize - 1; i >= 0; i--)
+	for (Stack::SizeType i = copySize - 1; i >= 0; i--)
 	{
 		newArray[i] = cur->_GetValue();
 		if (!i) break;
 		cur = cur->_GetNextNode();
 	}
 
-	for (Stack::size_type i = 0; i < copySize; i++)
-		this->push(newArray[i]);
+	for (Stack::SizeType i = 0; i < copySize; i++)
+		this->Push(newArray[i]);
 
 	delete[] newArray;
 }
 
-bool Stack::empty() const { return _top == nullptr; }
+bool Stack::Empty() const { return _top == nullptr; }
 
-Stack::size_type Stack::size() const
+Stack::SizeType Stack::Size() const
 {
-	if (empty()) return 0;
+	if (Empty()) return 0;
 	Node* cur = _top;
-	Stack::size_type count = 0;
+	Stack::SizeType count = 0;
 
 	while (cur != nullptr)
 	{
@@ -61,11 +61,11 @@ Stack::size_type Stack::size() const
 	return count;
 }
 
-Stack::reference Stack::top() { return _top->_GetAddr(); }
+Stack::Reference Stack::Top() { return _top->_GetAddr(); }
 
-void Stack::push(Stack::value_type val)
+void Stack::Push(Stack::ValueType val)
 {
-	if (empty())
+	if (Empty())
 	{
 		Node* newNode = static_cast<Node*>(new Node());
 		newNode->_SetValue(val);
@@ -79,9 +79,9 @@ void Stack::push(Stack::value_type val)
 	_top = newNode;
 }
 
-void Stack::emplace(Stack::value_type val)
+void Stack::Emplace(Stack::ValueType val)
 {
-	if (empty())
+	if (Empty())
 	{
 		Node* newNode = static_cast<Node*>(new Node());
 		newNode->_SetValue(val);
@@ -95,9 +95,9 @@ void Stack::emplace(Stack::value_type val)
 	_top = newNode;
 }
 
-void Stack::pop()
+void Stack::Pop()
 {
-	if (empty()) return;
+	if (Empty()) return;
 	if (_top->_GetNextNode() == nullptr)
 	{
 		delete(_top);
@@ -110,7 +110,7 @@ void Stack::pop()
 	delete temp;
 }
 
-void Stack::swap(Stack &stack)
+void Stack::Swap(Stack &stack)
 {
 	Node *temp = _top;
 	_top = stack._top;
