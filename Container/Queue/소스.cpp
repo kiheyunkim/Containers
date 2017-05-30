@@ -1,7 +1,7 @@
 #include"Queue.h"
 #include<queue>
 #include<iostream>
-void print(Queue queue)
+void print(Queue<int> queue)
 {
 	size_t size = queue.Size();
 	for (size_t index = 0; index < size; index++)
@@ -14,8 +14,8 @@ void print(Queue queue)
 
 void main()
 {
-	Queue queue1;
-	Queue queue2;
+	Queue<int> queue1;
+	Queue<int> queue2;
 	queue1.Push(1);
 	queue1.Push(2);
 	queue1.Push(3);
