@@ -1,11 +1,12 @@
 #pragma once
 #include<iostream>
 #include"Node.h"
+
 class Iterator
 {
 private:
 	typedef Node* NodePtr;
-
+	typedef int ValueType;
 private:
 	NodePtr* _target;
 
@@ -17,7 +18,7 @@ public:
 	NodePtr& _GetAddr();
 public:
 	Iterator();
-	Iterator(NodePtr const& node);
+	Iterator(const NodePtr& node);
 	Iterator(const Iterator& iter);
 	~Iterator();
 
@@ -27,7 +28,7 @@ public:
 	Iterator& operator--();
 	Iterator& operator-(int count);
 	Iterator& operator-=(int count);
-	int& operator[](int index);
+	ValueType& operator[](int index);
 	Iterator& operator=(const Iterator& iter);
 	bool operator<(const Iterator& iter) const;
 	bool operator<=(const Iterator& iter) const;
@@ -35,12 +36,12 @@ public:
 	bool operator>=(const Iterator& iter)const;
 	bool operator==(const Iterator& iter)const;
 	bool operator!=(const Iterator& iter)const;
-	int& operator*();
+	ValueType& operator*();
 	Iterator::NodePtr operator->();
 
 	friend std::ostream& operator<<(std::ostream& os, const Iterator& iter)
 	{
-		int value = (*(iter._target))->_GetValue();
+		Iterator::ValueType value = (*(iter._target))->_GetValue();
 		os << value;
 		return os;
 	}

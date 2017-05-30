@@ -1,6 +1,6 @@
 #pragma once
 #include "Iterator.h"
-#include "Reverse_Iterator.h"
+#include "ReverseIterator.h"
 #include "Node.h"
 
 #define		ALLOC_SIZE		6
@@ -19,16 +19,16 @@ private:
 	size_t _arraySize;
 
 public:
-	typedef int valueType;
-	typedef valueType& reference;
-	typedef const valueType& constReference;
-	typedef valueType* pointer;
-	typedef const valueType* constPointer;
+	typedef int ValueType;
+	typedef ValueType& Reference;
+	typedef const ValueType& ConstReference;
+	typedef ValueType* Pointer;
+	typedef const ValueType* ConstPointer;
 	typedef Iterator Iterator;
-	typedef const Iterator constIterator;
-	typedef Reverse_Iterator reverseIterator;
-	typedef const Reverse_Iterator constReverseIterator;
-	typedef size_t sizeType;
+	typedef const Iterator ConstIterator;
+	typedef ReverseIterator ReverseIterator;
+	typedef const ReverseIterator ConstReverseIterator;
+	typedef size_t SizeType;
 
 public:
 	Vector();
@@ -36,33 +36,33 @@ public:
 
 	Iterator Begin() const;
 	Iterator End() const;
-	Reverse_Iterator RBegin() const;
-	Reverse_Iterator REnd() const;
-	const Iterator CBegin() const;
-	const Iterator CEnd() const;
-	const Reverse_Iterator CrBegin() const;
-	const Reverse_Iterator CrEnd() const;
+	ReverseIterator ReverseBegin() const;
+	ReverseIterator ReverseEnd() const;
+	const Iterator ConstBegin() const;
+	const Iterator ConstEnd() const;
+	const ReverseIterator ConstReverseBegin() const;
+	const ReverseIterator ConstReverseEnd() const;
 
-	sizeType Size() const;
-	sizeType MaxSize() const;
-	void resize();
-	sizeType capacity() const;
+	SizeType Size() const;
+	SizeType MaxSize() const;
+	void Resize();
+	SizeType Capacity() const;
 	bool Empty() const;
 	void Reserve();
 	void ShrinkToFit();
 
-	reference operator[](size_t index);
-	reference at(size_t index);
-	reference front();
-	reference back();
-	void data();
+	Reference operator[](SizeType index);
+	Reference At(SizeType index);
+	Reference Front();
+	Reference Back();
+	void Data();
 
-	void Assign(size_t count, int value);
-	void PushBack(int value);
+	void Assign(SizeType count, ValueType value);
+	void PushBack(ValueType value);
 	void PopBack();
-	Iterator insert(const Iterator& position,int value);
-	void erase(const Iterator& position);
-	void swap(Vector& vector);
-	void clear();
+	Iterator insert(ConstIterator& position, ValueType value);
+	void Erase(ConstIterator& position);
+	void Swap(Vector& vector);
+	void Clear();
 };
 

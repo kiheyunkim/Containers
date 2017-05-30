@@ -59,7 +59,7 @@ Iterator& Iterator::operator-=(int count)
 	return *this;
 }
 
-int& Iterator::operator[](int index)
+Iterator::ValueType& Iterator::operator[](int index)
 {
 	for (int i = 0; i < index; i++)
 		_target++;
@@ -87,5 +87,5 @@ bool Iterator::operator>=(const Iterator& iter) const { return (*_target)->_GetV
 bool Iterator::operator!=(const Iterator& iter) const { return _target != iter._target; }
 bool Iterator::operator==(const Iterator& iter) const { return _target == iter._target; }
 
-int& Iterator::operator*() { return (*_target)->_GetAddr(); }
+Iterator::ValueType& Iterator::operator*() { return (*_target)->_GetAddr(); }
 Iterator::NodePtr Iterator::operator->() { return *_target; }

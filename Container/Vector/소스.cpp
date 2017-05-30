@@ -8,14 +8,7 @@ void main()
 	vec.PushBack(4);
 	vec.PushBack(5);
 	vec.PushBack(6);
-	vec.PushBack(7);
-
-	vec._dataArray[0];
-	vec._dataArray[1];
-	vec._dataArray[2];
-	vec._dataArray[3];
-	vec._dataArray[4];
-	vec._dataArray[5];
+	vec.PushBack(7);\
 
 	for (Vector::Iterator iter = vec.Begin(); iter != vec.End(); iter++)
 	{

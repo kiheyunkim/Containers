@@ -3,7 +3,10 @@
 class Node
 {
 private:
-	int _value;
+	typedef int ValueType;
+
+private:
+	ValueType _value;
 	bool _isEdge;
 
 public:
@@ -11,9 +14,9 @@ public:
 	Node(bool status);
 	Node(const Node& node);
 	~Node();
-	int _GetValue() const;
-	int& _GetAddr();
-	void _SetValue(int value);
+	ValueType _GetValue() const;
+	ValueType& _GetAddr();
+	void _SetValue(ValueType value);
 	bool _GetEdge() const;
 	void _SetEdge(bool status);
 

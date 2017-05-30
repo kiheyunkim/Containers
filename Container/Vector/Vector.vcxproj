@@ -148,13 +148,13 @@
   <ItemGroup>
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="Node.h" />
-    <ClInclude Include="Reverse_Iterator.h" />
+    <ClInclude Include="ReverseIterator.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Iterator.cpp" />
     <ClCompile Include="Node.cpp" />
-    <ClCompile Include="Reverse_Iterator.cpp" />
+    <ClCompile Include="ReverseIterator.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="소스.cpp" />
   </ItemGroup>

@@ -6,8 +6,8 @@ Node::Node(bool status) : _isEdge(status) {}
 Node::Node(const Node& node) { memcpy(this, &node, sizeof(Node)); }
 Node::~Node() {}
 
-int Node::_GetValue() const { return _value; }
-int& Node::_GetAddr() { return _value; }
+Node::ValueType Node::_GetValue() const { return _value; }
+Node::ValueType& Node::_GetAddr() { return _value; }
 void Node::_SetValue(int value) { _value = value; }
 bool Node::_GetEdge() const { return _isEdge; }
 void Node::_SetEdge(bool status) { _isEdge = status; }
