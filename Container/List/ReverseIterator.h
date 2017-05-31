@@ -2,28 +2,48 @@
 #include<iostream>
 #include<tchar.h>
 #include"Node.h"
+
+template<class T>
+class List;
+
+template<class T>
 class ReverseIterator
 {
 private:
-	typedef int ValueType;
+	typedef T ValueType;
 
 private:
-	Node *_target;
+	Node<T>* _target;
+
+private:
+	Node<T>* _GetNode() { return _target; }
+
+private:
+	ReverseIterator(const Node<T>& node) :_target(const_cast<Node<T>*>(&node)) {}
 
 public:
-	Node* _GetNode();
+	ReverseIterator() :_target(nullptr) {}
+	ReverseIterator(const Iterator<T>& iter) { memcpy(this, &iter, sizeof(Iterator<T>)); }
+	~ReverseIterator() {}
 
-public:
-	ReverseIterator();
-	ReverseIterator(const Node& node);
-	~ReverseIterator();
-
-	ReverseIterator& operator++(int);
-	ReverseIterator& operator--(int);
-	ReverseIterator& operator=(const ReverseIterator& iter);
-	bool operator==(const ReverseIterator& iter) const;
-	bool operator!=(const ReverseIterator& iter) const;
-	ValueType operator*() const;
+	ReverseIterator& operator++(int)
+	{
+		_target = _target->_GetPrevNode();
+		return *this;
+	}
+	ReverseIterator& operator--(int)
+	{
+		_target = _target->_GetNextNode();
+		return *this;
+	}
+	ReverseIterator& operator=(const ReverseIterator& iter)
+	{
+		memcpy(_target, iter._target, sizeof(_target));
+		return *this;
+	}
+	bool operator==(const ReverseIterator& iter) const { return _target == iter._target; }
+	bool operator!=(const ReverseIterator& iter) const { return _target != iter._target; }
+	ValueType operator*() const { return _target->_GetValue(); }
 
 	friend std::ostream& operator<<(std::ostream& os, const ReverseIterator& iter)
 	{
