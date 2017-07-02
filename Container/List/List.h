@@ -12,7 +12,7 @@ private:
 
 
 public:
-	typedef int ValueType;
+	typedef T ValueType;
 	typedef ValueType& Reference;
 	typedef const ValueType& ConstReference;
 	typedef ValueType* Pointer;
@@ -368,8 +368,6 @@ public:
 		tempList.Splice(tempList.Begin(), *this);
 
 		Clear();
-
-
 
 		while (!tempList.Empty())
 		{

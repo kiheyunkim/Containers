@@ -1,33 +1,56 @@
 #pragma once
 
+template<typename T>
 class Node
 {
 private:
-	typedef int ValueType;
+	typedef T ValueType;
 
 private:
 	ValueType _value;
 	bool _isEdge;
 
 public:
-	Node();
-	Node(bool status);
-	Node(const Node& node);
-	~Node();
-	ValueType _GetValue() const;
-	ValueType& _GetAddr();
-	void _SetValue(ValueType value);
-	bool _GetEdge() const;
-	void _SetEdge(bool status);
+	Node() :_isEdge(false) {}
+	Node(bool status) : _isEdge(status) {}
+	Node(const Node<T>& node) { memcpy(this, &node, sizeof(Node)); }
+	~Node() {}
+	ValueType _GetValue() const { return _value; }
+	ValueType& _GetAddr() { return _value; }
+	void _SetValue(ValueType value) { _value = value; }
+	bool _GetEdge() const { return _isEdge; }
+	void _SetEdge(bool status) { _isEdge = status; }
 
 public:
-	Node& operator=(const Node& node);
-	Node& operator+(int value);
-	Node& operator-(int value);
-	Node& operator+=(int value);
-	Node& operator-=(int value);
-	bool operator==(const Node& node);
-	bool operator!=(const Node& node);
+	Node<T>& operator=(const Node<T>& node)
+	{
+		_value = node._value;
+		return *this;
+	}
+	Node<T>& operator+(int value)
+	{
+		this->_value += value;
+		return *this;
+	}
+	Node<T>& operator-(int value)
+	{
+		this->_value += value;
+		return *this;
+	}
+	Node<T>& operator+=(int value)
+	{
+		this->_value += value;
+		return *this;
+	}
+
+	Node<T>& operator-=(int value)
+	{
+		this->_value -= value;
+		return *this;
+	}
+	bool operator==(const Node<T>& node) { return _value == node._value; }
+
+	bool operator!=(const Node<T>& node) { return !(_value == node._value); }
 };
 
 

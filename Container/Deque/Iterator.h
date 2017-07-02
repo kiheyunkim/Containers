@@ -2,40 +2,88 @@
 #include<iostream>
 #include<tchar.h>
 #include"Node.h"
+
+template<typename T>
 class Iterator
 {
 private:
-	Node *_target;
+	Node<T> *_target;
 
 public:
-	typedef int ValueType;
+	typedef T ValueType;
 
 public:
-	Node* _GetNode() { return _target; }
+	Node<T>* _GetNode() { return _target; }
 
 public:
-	Iterator();
-	Iterator(const Node& node);
-	Iterator(const Iterator& iterator);
-	~Iterator();
+	Iterator() :_target(nullptr) {}
+	Iterator(const Node<T>& node) : _target(const_cast<Node<T>*>(&node)) {}
+	Iterator(const Iterator<T>& iterator) : _target(iterator._target) {}
+	~Iterator() {}
 
-	Iterator& operator++(int);
-	Iterator& operator--(int);
-	Iterator& operator+(int count);
-	Iterator& operator-(int count);
-	Iterator& operator+=(int count);
-	Iterator& operator-=(int count);
-	ValueType& operator[](size_t index);
+	Iterator<T>& operator++(int)
+	{
+		_target = _target->_GetNextNode();
+		return *this;
+	}
 
-	Iterator& operator=(const Iterator& iter);
-	bool operator==(const Iterator& iter) const;
-	bool operator!=(const Iterator& iter) const;
-	bool operator<(const Iterator& iter) const;
-	bool operator<=(const Iterator& iter) const;
-	bool operator>(const Iterator& iter) const;
-	bool operator>=(const Iterator& iter) const;
-	ValueType& operator*() const;
-	
+	Iterator<T>& operator--(int)
+	{
+		_target = _target->_GetPrevNode();
+		return *this;
+	}
+
+	Iterator<T>& operator+(int count)
+	{
+		for (int i = 0; i < count; i++)
+			_target = _target->_GetNextNode();
+		return *this;
+	}
+
+	Iterator<T>& operator-(int count)
+	{
+		for (int i = 0; i < count; i++)
+			_target = _target->_GetPrevNode();
+		return *this;
+	}
+
+	Iterator<T>& operator+=(int count)
+	{
+		for (int i = 0; i < count; i++)
+			_target = _target->_GetNextNode();
+		return *this;
+	}
+
+	Iterator<T>& operator-=(int count)
+	{
+		for (int i = 0; i < count; i++)
+			_target = _target->_GetPrevNode();
+		return *this;
+	}
+
+	ValueType& operator[](size_t index)
+	{
+		Node *cur = _target;
+		for (size_t i = 0; i < index; i++)
+			cur = cur->_GetNextNode();
+
+		return cur->_GetAddr();
+	}
+
+	Iterator<T>& operator=(const Iterator<T>& iter)
+	{
+		memcpy(this, &iter, sizeof(Iterator));
+		return *this;
+	}
+
+	bool operator==(const Iterator<T>& iter) const { return _target == const_cast<Iterator&>(iter)._GetNode(); }
+	bool operator!=(const Iterator<T>& iter) const { return _target != const_cast<Iterator&>(iter)._GetNode(); }
+	bool operator<(const Iterator<T>& iter) const { return _target->_GetValue() < const_cast<Iterator&>(iter)._target->_GetValue(); }
+	bool operator<=(const Iterator<T>& iter) const { return _target->_GetValue() <= const_cast<Iterator&>(iter)._target->_GetValue(); }
+	bool operator>(const Iterator<T>& iter) const { return _target->_GetValue() > const_cast<Iterator&>(iter)._target->_GetValue(); }
+	bool operator>=(const Iterator<T>& iter) const { return _target->_GetValue() >= const_cast<Iterator&>(iter)._target->_GetValue(); }
+	ValueType& operator*() const { return _target->_GetAddr(); }
+
 	friend std::ostream& operator<<(std::ostream& os, const Iterator& iter)
 	{
 		Iterator::ValueType value = iter._target->_GetValue();
@@ -52,5 +100,3 @@ public:
 	}
 
 };
-
-
