@@ -1,1 +1,384 @@
-﻿
+﻿  소스.cpp
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(38): error C2059: 구문 오류: '{'
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(116): note: 컴파일 중인 클래스 템플릿 인스턴스화 'Iterator<T>'에 대한 참조를 확인하세요.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(38): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): warning C4346: 'NodePtr': 종속 이름이 형식이 아닙니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): note: 'typename'을 접두사로 사용하여 형식을 나타냅니다.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): error C2061: 구문 오류: 식별자 'NodePtr'
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(45): error C2662: 'T Node<T>::_GetValue(void) const': 'this' 포인터를 'Node'에서 'const Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(45): note: 원인: 'Node'에서 'const Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(45): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(54): error C2662: 'void Node<T>::_SetValue(T)': 'this' 포인터를 'Node'에서 'Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(54): note: 원인: 'Node'에서 'Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(54): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(13): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(13): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(13): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(13): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(13): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(15): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(15): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(15): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(15): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(19): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(19): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(19): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(19): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(19): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(21): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(21): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(21): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(21): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(25): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(25): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(25): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(25): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(25): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(27): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(27): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(27): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(27): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(31): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(31): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(31): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(31): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(31): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(33): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(33): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(33): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(33): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(37): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(37): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(37): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(37): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(37): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(39): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(39): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(39): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(39): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(43): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(43): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(43): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(43): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(43): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(45): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(45): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(45): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(45): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(49): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(49): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(49): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(49): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(49): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(51): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(51): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(51): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(51): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(55): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(55): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(55): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(55): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(55): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(57): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(57): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(57): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(57): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(61): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(61): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(61): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(61): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(61): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(63): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(63): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(63): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(63): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(67): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(67): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(67): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(67): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(67): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(69): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(69): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(69): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(69): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(73): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(73): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(73): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(73): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(73): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(75): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(75): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(75): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(75): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(79): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(79): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(79): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(79): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(79): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(81): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(81): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(81): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(81): error C2088: '<<': class에 맞지 않습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(96): error C2514: 'Iterator': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(96): error C2678: 이항 '!=': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(98): note: 'bool Iterator<T>::operator !=(const Iterator<T> &) const'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(96): note: 인수 목록 '(Vector::Iterator, Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(96): error C2678: 이항 '++': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(31): note: 'Iterator<T> &Iterator<T>::operator ++(int)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(96): note: 인수 목록 '(Vector::Iterator, int)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(98): error C2678: 이항 '*': 왼쪽 피연산자로 'Vector::Iterator' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(99): note: 'T &Iterator<T>::operator *(void)'일 수 있습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(98): note: 인수 목록 '(Vector::Iterator)'을(를) 일치시키는 동안
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(98): error C2100: 간접 참조가 잘못되었습니다.
+c:\users\kihey\documents\github\stl-container\container\vector\소스.cpp(98): error C2088: '<<': class에 맞지 않습니다.
+  Vector.cpp
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(38): error C2059: 구문 오류: '{'
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(116): note: 컴파일 중인 클래스 템플릿 인스턴스화 'Iterator<T>'에 대한 참조를 확인하세요.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(38): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): warning C4346: 'NodePtr': 종속 이름이 형식이 아닙니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): note: 'typename'을 접두사로 사용하여 형식을 나타냅니다.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): error C2061: 구문 오류: 식별자 'NodePtr'
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(45): error C2662: 'T Node<T>::_GetValue(void) const': 'this' 포인터를 'Node'에서 'const Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(45): note: 원인: 'Node'에서 'const Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(45): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(54): error C2662: 'void Node<T>::_SetValue(T)': 'this' 포인터를 'Node'에서 'Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(54): note: 원인: 'Node'에서 'Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(54): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(13): error C2079: 'Vector::Begin'은(는) 정의되지 않은 class 'Iterator'을(를) 사용합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(13): error C2440: 'static_cast': 'Vector::NodePtr'에서 'Vector::Iterator'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(13): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(14): error C2079: 'Vector::End'은(는) 정의되지 않은 class 'Iterator'을(를) 사용합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(14): error C2440: 'static_cast': 'Vector::NodePtr'에서 'Vector::Iterator'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(14): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(17): error C2079: 'Vector::ConstBegin'은(는) 정의되지 않은 class 'Iterator'을(를) 사용합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(17): error C2440: 'static_cast': 'Vector::NodePtr'에서 'Vector::ConstIterator'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(17): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(18): error C2079: 'Vector::ConstEnd'은(는) 정의되지 않은 class 'Iterator'을(를) 사용합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(18): error C2440: 'static_cast': 'Vector::NodePtr'에서 'Vector::ConstIterator'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(18): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(38): error C2662: 'T &Node<T>::_GetAddr(void)': 'this' 포인터를 'Node'에서 'Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(38): note: 원인: 'Node'에서 'Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(38): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(40): error C2662: 'T &Node<T>::_GetAddr(void)': 'this' 포인터를 'Node'에서 'Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(40): note: 원인: 'Node'에서 'Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(40): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(42): error C2662: 'T &Node<T>::_GetAddr(void)': 'this' 포인터를 'Node'에서 'Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(42): note: 원인: 'Node'에서 'Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(42): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(44): error C2662: 'T &Node<T>::_GetAddr(void)': 'this' 포인터를 'Node'에서 'Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(44): note: 원인: 'Node'에서 'Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(44): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(68): error C2514: 'Node': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\node.h(5): note: 'Node' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(69): error C2514: 'Node': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\node.h(5): note: 'Node' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(84): error C2514: 'Node': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\node.h(5): note: 'Node' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(85): error C2662: 'void Node<T>::_SetValue(T)': 'this' 포인터를 'Node'에서 'Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(85): note: 원인: 'Node'에서 'Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(85): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(114): error C2079: 'Vector::insert'은(는) 정의되지 않은 class 'Iterator'을(를) 사용합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(124): error C2514: 'Node': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\node.h(5): note: 'Node' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(125): error C2514: 'Node': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\node.h(5): note: 'Node' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(143): error C2662: 'bool Node<T>::_GetEdge(void) const': 'this' 포인터를 'Node'에서 'const Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(143): note: 원인: 'Node'에서 'const Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(143): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(144): error C2662: 'Node<T> *Iterator<T>::_GetNode(void)': 'this' 포인터를 'Vector::Iterator'에서 'Iterator<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(144): note: 원인: 'Vector::Iterator'에서 'Iterator<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(144): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(153): error C2514: 'Node': 클래스에 생성자가 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\node.h(5): note: 'Node' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(154): error C2662: 'void Node<T>::_SetValue(T)': 'this' 포인터를 'Node'에서 'Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(154): note: 원인: 'Node'에서 'Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(154): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(158): error C2440: 'return': 'Vector::NodePtr'에서 'Iterator'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(158): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(170): error C2662: 'bool Node<T>::_GetEdge(void) const': 'this' 포인터를 'Node'에서 'const Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(170): note: 원인: 'Node'에서 'const Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(170): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(171): error C2662: 'Node<T> *Iterator<T>::_GetNode(void)': 'this' 포인터를 'Vector::Iterator'에서 'Iterator<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(171): note: 원인: 'Vector::Iterator'에서 'Iterator<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\vector.cpp(171): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+  ReverseIterator.cpp
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(8): error C2955: 'Node': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\node.h(5): note: 'Node' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(45): error C2662: 'T Node<T>::_GetValue(void) const': 'this' 포인터를 'Node'에서 'const Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(45): note: 원인: 'Node'에서 'const Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(45): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(54): error C2662: 'void Node<T>::_SetValue(T)': 'this' 포인터를 'Node'에서 'Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(54): note: 원인: 'Node'에서 'Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.h(54): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(63): error C2662: 'T &Node<T>::_GetAddr(void)': 'this' 포인터를 'Node'에서 'Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(63): note: 원인: 'Node'에서 'Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(63): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(72): error C2662: 'T Node<T>::_GetValue(void) const': 'this' 포인터를 'Node'에서 'const Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(72): note: 원인: 'Node'에서 'const Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(72): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(73): error C2662: 'T Node<T>::_GetValue(void) const': 'this' 포인터를 'Node'에서 'const Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(73): note: 원인: 'Node'에서 'const Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(73): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(74): error C2662: 'T Node<T>::_GetValue(void) const': 'this' 포인터를 'Node'에서 'const Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(74): note: 원인: 'Node'에서 'const Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(74): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(75): error C2662: 'T Node<T>::_GetValue(void) const': 'this' 포인터를 'Node'에서 'const Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(75): note: 원인: 'Node'에서 'const Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(75): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(78): error C2662: 'T &Node<T>::_GetAddr(void)': 'this' 포인터를 'Node'에서 'Node<T> &'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(78): note: 원인: 'Node'에서 'Node<T>'(으)로 변환할 수 없습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\reverseiterator.cpp(78): note: 변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+  Node.cpp
+  Iterator.cpp
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(38): error C2059: 구문 오류: '{'
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(116): note: 컴파일 중인 클래스 템플릿 인스턴스화 'Iterator<T>'에 대한 참조를 확인하세요.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(38): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): warning C4346: 'NodePtr': 종속 이름이 형식이 아닙니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): note: 'typename'을 접두사로 사용하여 형식을 나타냅니다.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): error C2061: 구문 오류: 식별자 'NodePtr'
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(100): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(4): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(4): error C2509: '{ctor}': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(5): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(5): error C2509: '{ctor}': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(5): error C2065: 'node': 선언되지 않은 식별자입니다.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(6): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(6): error C2509: '{ctor}': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(7): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(7): error C2509: '{dtor}': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(9): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(9): error C2509: '_GetNode': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(10): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(10): error C2509: '_GetAddr': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(13): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(14): error C2509: '++': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(19): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(20): error C2509: '+': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(28): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(29): error C2509: '+=': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(37): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(38): error C2509: '--': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(44): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(45): error C2509: '-': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(53): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(54): error C2509: '-=': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(62): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(63): error C2509: '[]': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(70): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(71): error C2509: '=': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(76): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(77): error C2509: '=': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(83): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(83): error C2509: '<': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(84): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(84): error C2509: '<=': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(85): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(85): error C2509: '>': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(86): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(86): error C2509: '>=': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(87): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(87): error C2509: '!=': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(88): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(88): error C2509: '==': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(90): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(90): error C2509: '*': 멤버 함수를 'Iterator'에서 선언하지 않았습니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(91): error C2955: 'Iterator': 클래스 템플릿을(를) 사용하려면 템플릿 인수 목록이 필요합니다.
+  c:\users\kihey\documents\github\stl-container\container\vector\iterator.h(7): note: 'Iterator' 선언을 참조하십시오.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(91): error C2039: '->': 'Iterator<T>'의 멤버가 아닙니다.
+c:\users\kihey\documents\github\stl-container\container\vector\iterator.cpp(91): error C2065: '_target': 선언되지 않은 식별자입니다.
+  코드를 생성하고 있습니다...

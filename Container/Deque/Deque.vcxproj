@@ -146,10 +146,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Deque.cpp" />
-    <ClCompile Include="Iterator.cpp" />
-    <ClCompile Include="Node.cpp" />
-    <ClCompile Include="ReverseIterator.cpp" />
     <ClCompile Include="소스.cpp" />
   </ItemGroup>
   <ItemGroup>
