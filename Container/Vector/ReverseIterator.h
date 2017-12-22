@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _REVERSEITERATOR_H_
+#define _REVERSEITERATOR_H_
 #include<iostream>
 #include<tchar.h>
 #include"Node.h"
@@ -10,31 +11,35 @@ private:
 	typedef T ValueType;
 
 private:
-	NodePtr* _target;
+	NodePtr* target;
 
 private:
-	ReverseIterator& operator=(const NodePtr& node);
+	ReverseIterator& operator=(const NodePtr& node)
+	{
+		target = const_cast<ReverseIterator::NodePtr*>(&node);
+		return *this;
+	}
 
 public:
-	NodePtr _GetNode() { return *_target; }
-	NodePtr& _GetAddr() { return *_target; }
+	NodePtr getNode() { return *target; }
+	NodePtr& getAddr() { return *target; }
 public:
-	ReverseIterator() :_target(nullptr) {}
-	ReverseIterator(const NodePtr& node) { *_target = const_cast<ReverseIterator::NodePtr&>(node); }
+	ReverseIterator() :target(nullptr) {}
+	ReverseIterator(const NodePtr& node) { *target = const_cast<ReverseIterator::NodePtr&>(node); }
 	ReverseIterator(const ReverseIterator& iter);
 	~ReverseIterator() {}
 
 	ReverseIterator& operator++(int)
 	{
-		_target--;
+		target--;
 		return *this;
 	}
 	
 	ReverseIterator& operator+(int count)
 	{
 		for (int i = 0; i < count; i++)
-			if (_target != nullptr)
-				_target--;
+			if (target != nullptr)
+				target--;
 
 		return *this;
 	}
@@ -42,23 +47,23 @@ public:
 	ReverseIterator& operator+=(int count)
 	{
 		for (int i = 0; i < count; i++)
-			if (_target != nullptr)
-				_target--;
+			if (target != nullptr)
+				target--;
 
 		return *this;
 	}
 
 	ReverseIterator& operator--(int)
 	{
-		_target++;
+		target++;
 		return *this;
 	}
 
 	ReverseIterator& operator-(int count)
 	{
 		for (int i = 0; i < count; i++)
-			if (_target != nullptr)
-				_target++;
+			if (target != nullptr)
+				target++;
 
 		return *this;
 	}
@@ -66,8 +71,8 @@ public:
 	ReverseIterator& operator-=(int count)
 	{
 		for (int i = 0; i < count; i++)
-			if (_target != nullptr)
-				_target++;
+			if (target != nullptr)
+				target++;
 
 		return *this;
 	}
@@ -75,29 +80,29 @@ public:
 	ValueType& operator[](int index)
 	{
 		for (int i = 0; i < index; i++)
-			_target--;
+			target--;
 
-		return (*_target)->_GetAddr();
+		return (*target)->getAddr();
 	}
 	
 	ReverseIterator& operator=(const ReverseIterator& iter)
 	{
-		_target = iter._target;
+		target = iter.target;
 		return *this;
 	}
 
-	bool operator<(const ReverseIterator& iter)const { return (*_target)->_GetValue() < (*_target)->_GetValue(); }
-	bool operator<=(const ReverseIterator& iter)const { return (*_target)->_GetValue() <= (*_target)->_GetValue(); }
-	bool operator>(const ReverseIterator& iter)const { return (*_target)->_GetValue() > (*_target)->_GetValue(); }
-	bool operator>=(const ReverseIterator& iter)const { return (*_target)->_GetValue() >= (*_target)->_GetValue(); }
-	bool operator==(const ReverseIterator& iter) const { return _target == iter._target; }
-	bool operator!=(const ReverseIterator& iter) const { return _target != iter._target; }
-	ValueType& operator*() const { return (*_target)->_GetAddr(); }
-	NodePtr operator->() { return *_target; }
+	bool operator<(const ReverseIterator& iter)const { return (*target)->getValue() < (*target)->getValue(); }
+	bool operator<=(const ReverseIterator& iter)const { return (*target)->getValue() <= (*target)->getValue(); }
+	bool operator>(const ReverseIterator& iter)const { return (*target)->getValue() > (*target)->getValue(); }
+	bool operator>=(const ReverseIterator& iter)const { return (*target)->getValue() >= (*target)->getValue(); }
+	bool operator==(const ReverseIterator& iter) const { return target == iter.target; }
+	bool operator!=(const ReverseIterator& iter) const { return target != iter.target; }
+	ValueType& operator*() const { return (*target)->getAddr(); }
+	NodePtr operator->() { return *target; }
 
 	friend std::ostream& operator<<(std::ostream& os, const ReverseIterator& iter)
 	{
-		ReverseIterator::ValueType value = (*iter._target)->_GetValue();
+		ReverseIterator::ValueType value = (*iter.target)->getValue();
 		os << value;
 		return os;
 	}
@@ -106,7 +111,9 @@ public:
 	{
 		ReverseIterator::ValueType value;
 		is >> value;
-		(*iter._target)->_SetValue(value);
+		(*iter.target)->setValue(value);
 		return is;
 	}
 };
+
+#endif // !_REVERSEITERATOR_H_

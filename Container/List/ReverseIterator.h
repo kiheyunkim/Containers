@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _REVERSEITERATOR_H_
+#define _REVERSEITERATOR_H_
 #include<iostream>
 #include<tchar.h>
 #include"Node.h"
@@ -13,49 +14,50 @@ private:
 	typedef T ValueType;
 
 private:
-	Node<T>* _target;
+	Node<T>* target;
 
 private:
-	Node<T>* _GetNode() { return _target; }
+	Node<T>* _GetNode() { return target; }
 
 private:
-	ReverseIterator(const Node<T>& node) :_target(const_cast<Node<T>*>(&node)) {}
+	ReverseIterator(const Node<T>& node) :target(const_cast<Node<T>*>(&node)) {}
 
 public:
-	ReverseIterator() :_target(nullptr) {}
+	ReverseIterator() :target(nullptr) {}
 	ReverseIterator(const Iterator<T>& iter) { memcpy(this, &iter, sizeof(Iterator<T>)); }
 	~ReverseIterator() {}
 
 	ReverseIterator& operator++(int)
 	{
-		_target = _target->_GetPrevNode();
+		target = target->getPrevNode();
 		return *this;
 	}
 	ReverseIterator& operator--(int)
 	{
-		_target = _target->_GetNextNode();
+		target = target->getNextNode();
 		return *this;
 	}
 	ReverseIterator& operator=(const ReverseIterator& iter)
 	{
-		memcpy(_target, iter._target, sizeof(_target));
+		memcpy(target, iter.target, sizeof(target));
 		return *this;
 	}
-	bool operator==(const ReverseIterator& iter) const { return _target == iter._target; }
-	bool operator!=(const ReverseIterator& iter) const { return _target != iter._target; }
-	ValueType operator*() const { return _target->_GetValue(); }
+	bool operator==(const ReverseIterator& iter) const { return target == iter.target; }
+	bool operator!=(const ReverseIterator& iter) const { return target != iter.target; }
+	ValueType operator*() const { return target->getValue(); }
 
 	friend std::ostream& operator<<(std::ostream& os, const ReverseIterator& iter)
 	{
-		ReverseIterator::ValueType value = iter._target->_GetValue();
+		ReverseIterator::ValueType value = iter.target->getValue();
 		os << value;
 		return os;
 	}
 
 	friend std::istream& operator >> (std::istream& is, const ReverseIterator& iter)
 	{
-		ReverseIterator::ValueType value = iter._target->_GetValue();
+		ReverseIterator::ValueType value = iter.target->getValue();
 		is >> value;
 		return is;
 	}
 };
+#endif	//_REVERSEITERATOR_H_

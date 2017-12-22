@@ -4,21 +4,21 @@ template<typename T>
 class Queue
 {
 private:
-	Node<T>* _front;
-	Node<T>* _rear;
+	Node<T>* front;
+	Node<T>* rear;
 
 public:
-	Queue() :_front(nullptr), _rear(nullptr) {}
+	Queue() :front(nullptr), rear(nullptr) {}
 
-	Queue(const Queue<T>& queue) : _front(nullptr), _rear(nullptr)
+	Queue(const Queue<T>& queue) : front(nullptr), rear(nullptr)
 	{
 		Queue<T>::SizeType copySize = queue.Size();
-		Node<T>* cur = queue._front;
+		Node<T>* cur = queue.front;
 
 		for (Queue<T>::SizeType index = 0; index < copySize; index++)
 		{
-			Push(cur->_GetValue());
-			cur = cur->_GetNextNode();
+			Push(cur->getValue());
+			cur = cur->getNextNode();
 		}
 	}
 
@@ -36,53 +36,53 @@ public:
 		while (Empty()) Pop();
 
 		Queue<T>::SizeType copySize = queue.Size();
-		Node<T>* cur = queue._front;
+		Node<T>* cur = queue.front;
 
 		for (Queue::SizeType index = 0; index < copySize; index++)
 		{
-			Push(cur->_GetValue());
-			cur = cur->_GetNextNode();
+			Push(cur->getValue());
+			cur = cur->getNextNode();
 		}
 
 		return *this;
 	}
 
-	bool Empty() const{ return _front == nullptr&&_rear == nullptr; }
+	bool Empty() const { return front == nullptr && rear == nullptr; }
 	
 	SizeType Size() const
 	{
 		if (Empty()) return 0;
-		Node<T>* cur = _front;
+		Node<T>* cur = front;
 		size_t size = 1;
 
-		while (cur->_GetNextNode() != nullptr)
+		while (cur->getNextNode() != nullptr)
 		{
-			cur = cur->_GetNextNode();
+			cur = cur->getNextNode();
 			size += 1;
 		}
 
 		return size;
 	}
 
-	Reference Front() { return _front->_GetAddr(); }
+	Reference Front() { return front->getAddr(); }
 	
-	Reference Back() { return _rear->_GetAddr(); }
+	Reference Back() { return rear->getAddr(); }
 	
 	void Push(ValueType val)
 	{
 		if (Empty())
 		{
 			Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
-			newNode->_SetValue(val);
-			_front = newNode;
-			_rear = newNode;
+			newNode->setValue(val);
+			front = newNode;
+			rear = newNode;
 			return;
 		}
 		Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
-		newNode->_SetValue(val);
-		newNode->_SetPrevNode(_rear);
-		_rear->_SetNextNode(newNode);
-		_rear = newNode;
+		newNode->setValue(val);
+		newNode->setPrevNode(rear);
+		rear->setNextNode(newNode);
+		rear = newNode;
 	}
 	
 	void Emplace(ValueType val)
@@ -93,37 +93,37 @@ public:
 			return;
 		}
 		Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
-		newNode->_SetPrevNode(_rear);
-		_rear->_SetNextNode(newNode);
-		_rear = newNode;
+		newNode->setPrevNode(rear);
+		rear->_SetNextNode(newNode);
+		rear = newNode;
 	}
 	
 	void Pop()
 	{
 		if (Empty()) return;
-		if (_front == _rear)
+		if (front == rear)
 		{
-			delete(_front);
-			_front = nullptr;
-			_rear = nullptr;
+			delete(front);
+			front = nullptr;
+			rear = nullptr;
 			return;
 		}
-		Node<T>* temp = _front;
-		_front = _front->_GetNextNode();
-		_front->_SetPrevNode(nullptr);
+		Node<T>* temp = front;
+		front = front->getNextNode();
+		front->setPrevNode(nullptr);
 
 		delete(temp);
 	}
 	
 	void Swap(Queue<T>& queue)
 	{
-		Node<T>* frontTemp = queue._front;
-		Node<T>* rearTemp = queue._rear;
+		Node<T>* frontTemp = queue.front;
+		Node<T>* rearTemp = queue.rear;
 
-		queue._front = _front;
-		queue._rear = _rear;
+		queue.front = front;
+		queue.rear = rear;
 
-		_front = frontTemp;
-		_rear = rearTemp;
+		front = frontTemp;
+		rear = rearTemp;
 	}
 };

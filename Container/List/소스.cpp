@@ -20,7 +20,7 @@ void main()
 	print(list);
 
 	List<int>::Iterator iter = list.End();
-	std::cout << *iter;
+	std::cout << *iter << std::endl;
 	
 	std::cout << list.Size() << std::endl;
 	std::cout << *list.Begin() << std::endl;

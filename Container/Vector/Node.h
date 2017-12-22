@@ -1,4 +1,14 @@
-#pragma once
+#ifndef _NODE_H_
+#define _NODE_H_
+
+template<class T>
+class Iterator;
+
+template<class T>
+class ReverseIterator;
+
+template<class T>
+class Vector;
 
 template<typename T>
 class Node
@@ -7,50 +17,54 @@ private:
 	typedef T ValueType;
 
 private:
-	ValueType _value;
-	bool _isEdge;
+	ValueType value;
+	bool isEdge;
 
-public:
-	Node() :_isEdge(false) {}
-	Node(bool status) : _isEdge(status) {}
+private:
+	Node() :isEdge(false) {}
+	Node(bool status) : isEdge(status) {}
 	Node(const Node<T>& node) { memcpy(this, &node, sizeof(Node)); }
 	~Node() {}
-	ValueType _GetValue() const { return _value; }
-	ValueType& _GetAddr() { return _value; }
-	void _SetValue(ValueType value) { _value = value; }
-	bool _GetEdge() const { return _isEdge; }
-	void _SetEdge(bool status) { _isEdge = status; }
+
+private:
+	ValueType getValue() const { return value; }
+	ValueType& getAddr() { return value; }
+	void setValue(ValueType value) { this->value = value; }
+	bool getEdge() const { return isEdge; }
+	void setEdge(bool status) { isEdge = status; }
 
 public:
 	Node<T>& operator=(const Node<T>& node)
 	{
-		_value = node._value;
+		this->value = node._value;
 		return *this;
 	}
 	Node<T>& operator+(int value)
 	{
-		this->_value += value;
+		this->value += value;
 		return *this;
 	}
 	Node<T>& operator-(int value)
 	{
-		this->_value += value;
+		this->value += value;
 		return *this;
 	}
 	Node<T>& operator+=(int value)
 	{
-		this->_value += value;
+		this->value += value;
 		return *this;
 	}
-
 	Node<T>& operator-=(int value)
 	{
-		this->_value -= value;
+		this->value -= value;
 		return *this;
 	}
-	bool operator==(const Node<T>& node) { return _value == node._value; }
-
-	bool operator!=(const Node<T>& node) { return !(_value == node._value); }
+	bool operator==(const Node<T>& node) { return value == node.value; }
+	bool operator!=(const Node<T>& node) { return !(value == node.value); }
+	
+	friend class Iterator<T>;
+	friend class ReverseIterator<T>;
+	friend class Vector<T>;
 };
 
-
+#endif // !_NODE_H_

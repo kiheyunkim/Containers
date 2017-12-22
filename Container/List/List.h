@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _LIST_H_
+#define _LIST_H_
 #include"Iterator.h"
 #include"ReverseIterator.h"
 #include"Node.h"
@@ -7,8 +8,8 @@ template<class T>
 class List
 {
 private:
-	Node<T>* _head;
-	Node<T>* _tail;
+	Node<T>* head;
+	Node<T>* tail;
 
 
 public:
@@ -24,7 +25,7 @@ public:
 	typedef size_t SizeType;
 
 private:
-	void _swap(ValueType &x1, ValueType &x2)
+	void swap(ValueType &x1, ValueType &x2)
 	{
 		List<T>::ValueType temp = x1;
 		x1 = x2;
@@ -32,28 +33,28 @@ private:
 	}
 
 public:
-	List():_head(nullptr),_tail(nullptr)
+	List():head(nullptr),tail(nullptr)
 	{
 		Node<T>* dummyHeadNode = static_cast<Node<T>*>(new Node<T>());
 		Node<T>* dummyTailNode = static_cast<Node<T>*>(new Node<T>());
 
-		_head = dummyHeadNode;
-		_tail = dummyTailNode;
+		head = dummyHeadNode;
+		tail = dummyTailNode;
 		
-		_head->_SetNextNode(_tail);
-		_tail->_SetPrevNode(_head);
+		head->setNextNode(tail);
+		tail->setPrevNode(head);
 	}
 	
-	List(const List<T>& list):_head(nullptr),_tail(nullptr)
+	List(const List<T>& list):head(nullptr),tail(nullptr)
 	{
 		Node<T>* dummyHeadNode = static_cast<Node<T>*>(new Node<T>());
 		Node<T>* dummyTailNode = static_cast<Node<T>*>(new Node<T>());
 
-		_head = dummyHeadNode;
-		_tail = dummyTailNode;
+		head = dummyHeadNode;
+		tail = dummyTailNode;
 
-		_head->_SetNextNode(_tail);
-		_tail->_SetPrevNode(_head);
+		head->setNextNode(tail);
+		tail->setPrevNode(head);
 
 		List<T>::Iterator iter = list.ConstBegin();
 
@@ -69,40 +70,40 @@ public:
 		if (!Empty())
 			while (!Empty()) PopBack();
 
-		delete _head;
-		delete _tail;
+		delete head;
+		delete tail;
 	}
 
 	List& operator=(const List<T>& targetList)
 	{
-		Node<T>* cur = _head->_GetNextNode();
+		Node<T>* cur = head->getNextNode();
 		List<T>::SizeType copySize = Size();
 
 		for (List<T>::SizeType i = 0; i < copySize; i++)
 		{
-			PushBack(cur->_GetValue());
-			cur = cur->_GetNextNode();
+			PushBack(cur->getValue());
+			cur = cur->getNextNode();
 		}
 
 		return *this;
 	}
 
 	//Iterator
-	Iterator Begin() { return static_cast<List<T>::Iterator>(*_head->_GetNextNode()); }
-	Iterator End() { return static_cast<List<T>::Iterator>(*_tail); }
-	ReverseIterator ReverseBegin() { return static_cast<List<T>::ReverseIterator>(*_tail->_GetPrevNode()); }
-	ReverseIterator ReverseEnd() { return static_cast<List<T>::ReverseIterator>(*_head); }
-	ConstIterator ConstBegin() const { return static_cast<List<T>::ConstIterator>(*_head->_GetNextNode()); }
-	ConstIterator ConstEnd() const { return static_cast<List<T>::ConstIterator>(*_tail); }
-	ConstReverseIterator ConstReverseBegin() const { return static_cast<List<T>::ConstReverseIterator>(*_tail->_GetPrevNode()); }
-	ConstReverseIterator ConstReverseEnd() const { return static_cast<List<T>::ConstReverseIterator>(*_head); }
+	Iterator Begin() { return static_cast<List<T>::Iterator>(*head->getNextNode()); }
+	Iterator End() { return static_cast<List<T>::Iterator>(*tail); }
+	ReverseIterator ReverseBegin() { return static_cast<List<T>::ReverseIterator>(*tail->getPrevNode()); }
+	ReverseIterator ReverseEnd() { return static_cast<List<T>::ReverseIterator>(*head); }
+	ConstIterator ConstBegin() const { return static_cast<List<T>::ConstIterator>(*head->getNextNode()); }
+	ConstIterator ConstEnd() const { return static_cast<List<T>::ConstIterator>(*tail); }
+	ConstReverseIterator ConstReverseBegin() const { return static_cast<List<T>::ConstReverseIterator>(*tail->getPrevNode()); }
+	ConstReverseIterator ConstReverseEnd() const { return static_cast<List<T>::ConstReverseIterator>(*head); }
 
 	//Capacity
-	bool Empty() const { return _head->_GetNextNode() == _tail; }
+	bool Empty() const { return head->getNextNode() == tail; }
 	SizeType Size() const
 	{
 		List<T>::SizeType size = 0;
-		List<T>::Iterator tempIter = static_cast<List<T>::Iterator>(*_head->_GetNextNode());
+		List<T>::Iterator tempIter = static_cast<List<T>::Iterator>(*head->getNextNode());
 
 		while (tempIter != ConstEnd())
 		{
@@ -116,8 +117,8 @@ public:
 	SizeType MaxSize() { return -1; }
 
 	//Element access
-	Reference Front() { return _head->_GetAddr(); }
-	Reference Back() { return _tail->_GetPrevNode()->_GetAddr(); }
+	Reference Front() { return head->getAddr(); }
+	Reference Back() { return tail->getPrevNode()->getAddr(); }
 
 	//Modifiers
 	void Assign(SizeType n, ValueType value)
@@ -127,63 +128,63 @@ public:
 	void EmplaceFront(ValueType value)
 	{
 		Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
-		newNode->_SetValue(value);
+		newNode->setValue(value);
 
-		newNode->_SetNextNode(_head->_GetNextNode());
-		newNode->_SetPrevNode(_head);
-		_head->_GetNextNode()->_SetPrevNode(newNode);
-		_head->_SetNextNode(newNode);
+		newNode->setNextNode(head->getNextNode());
+		newNode->setPrevNode(head);
+		head->getNextNode()->setPrevNode(newNode);
+		head->setNextNode(newNode);
 	}
 	void PushFront(ValueType value)
 	{
 		Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
-		newNode->_SetValue(value);
+		newNode->setValue(value);
 
-		newNode->_SetNextNode(_head->_GetNextNode());
-		newNode->_SetPrevNode(_head);
-		_head->_GetNextNode()->_SetPrevNode(newNode);
-		_head->_SetNextNode(newNode);
+		newNode->setNextNode(head->getNextNode());
+		newNode->setPrevNode(head);
+		head->getNextNode()->setPrevNode(newNode);
+		head->setNextNode(newNode);
 	}
 	void PopFront()
 	{
 		if (Empty()) return;
 
-		Node<T>* tempNode = _head->_GetNextNode();
-		tempNode->_GetPrevNode()->_SetNextNode(tempNode->_GetNextNode());
-		tempNode->_GetNextNode()->_SetPrevNode(tempNode->_GetPrevNode());
-		tempNode->_SetPrevNode(nullptr);
-		tempNode->_SetNextNode(nullptr);
+		Node<T>* tempNode = head->getNextNode();
+		tempNode->getPrevNode()->setNextNode(tempNode->getNextNode());
+		tempNode->getNextNode()->setPrevNode(tempNode->getPrevNode());
+		tempNode->setPrevNode(nullptr);
+		tempNode->setNextNode(nullptr);
 
 		delete tempNode;
 	}
 	void EmplaceBack(ValueType value)
 	{
 		Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
-		newNode->_SetValue(value);
+		newNode->setValue(value);
 
-		newNode->_SetNextNode(_tail->_GetPrevNode()->_GetNextNode());
-		newNode->_SetPrevNode(_tail->_GetPrevNode());
-		_tail->_GetPrevNode()->_SetNextNode(newNode);
-		_tail->_SetPrevNode(newNode);
+		newNode->setNextNode(tail->getPrevNode()->getNextNode());
+		newNode->setPrevNode(tail->getPrevNode());
+		tail->getPrevNode()->setNextNode(newNode);
+		tail->setPrevNode(newNode);
 	}
 	void PushBack(ValueType value)
 	{
 		Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
-		newNode->_SetValue(value);
+		newNode->setValue(value);
 
-		newNode->_SetNextNode(_tail->_GetPrevNode()->_GetNextNode());
-		newNode->_SetPrevNode(_tail->_GetPrevNode());
-		_tail->_GetPrevNode()->_SetNextNode(newNode);
-		_tail->_SetPrevNode(newNode);
+		newNode->setNextNode(tail->getPrevNode()->getNextNode());
+		newNode->setPrevNode(tail->getPrevNode());
+		tail->getPrevNode()->setNextNode(newNode);
+		tail->setPrevNode(newNode);
 	}
 	void PopBack()
 	{
-		Node<T>* tempNode = _tail->_GetPrevNode();
+		Node<T>* tempNode = tail->getPrevNode();
 
-		_tail->_SetPrevNode(tempNode->_GetPrevNode());
-		_tail->_GetPrevNode()->_SetNextNode(tempNode->_GetNextNode());
-		tempNode->_SetPrevNode(nullptr);
-		tempNode->_SetNextNode(nullptr);
+		tail->setPrevNode(tempNode->getPrevNode());
+		tail->getPrevNode()->setNextNode(tempNode->getNextNode());
+		tempNode->setPrevNode(nullptr);
+		tempNode->setNextNode(nullptr);
 
 		delete tempNode;
 	}
@@ -191,23 +192,23 @@ public:
 	{
 		Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
 
-		newNode->_SetValue(val);
-		newNode->_SetNextNode(const_cast<List<T>::Iterator&>(pos)._GetNode());
-		newNode->_SetPrevNode(const_cast<List<T>::Iterator&>(pos)._GetNode()->_GetPrevNode());
-		const_cast<List<T>::Iterator&>(pos)._GetNode()->_GetPrevNode()->_SetNextNode(newNode);
-		const_cast<List<T>::Iterator&>(pos)._GetNode()->_SetPrevNode(newNode);
+		newNode->setValue(val);
+		newNode->setNextNode(const_cast<List<T>::Iterator&>(pos).getNode());
+		newNode->setPrevNode(const_cast<List<T>::Iterator&>(pos).getNode()->getPrevNode());
+		const_cast<List<T>::Iterator&>(pos).getNode()->getPrevNode()->setNextNode(newNode);
+		const_cast<List<T>::Iterator&>(pos).getNode()->setPrevNode(newNode);
 
 		return static_cast<List::Iterator>(*newNode);
 	}
 	Iterator Erase(ConstIterator& pos)
 	{
-		Node<T>* tempNode = const_cast<List<T>::Iterator&>(pos)._GetNode();
+		Node<T>* tempNode = const_cast<List<T>::Iterator&>(pos).getNode();
 		List<T>::Iterator iter = static_cast<List<T>::Iterator>(*tempNode);
 
-		tempNode->_GetPrevNode()->_SetNextNode(tempNode->_GetNextNode());
-		tempNode->_GetNextNode()->_SetPrevNode(tempNode->_GetPrevNode());
-		tempNode->_SetPrevNode(nullptr);
-		tempNode->_SetNextNode(nullptr);
+		tempNode->getPrevNode()->setNextNode(tempNode->getNextNode());
+		tempNode->getNextNode()->setPrevNode(tempNode->getPrevNode());
+		tempNode->setPrevNode(nullptr);
+		tempNode->setNextNode(nullptr);
 
 		delete tempNode;
 
@@ -215,14 +216,14 @@ public:
 	}
 	void Swap(List<T> &list)
 	{
-		Node* headTemp = _head;
-		Node* tailTemp = _tail;
+		Node<T>* headTemp = head;
+		Node<T>* tailTemp = tail;
 
-		_head = list._head;
-		_tail = list._tail;
+		head = list.head;
+		tail = list.tail;
 
-		list._head = headTemp;
-		list._tail = tailTemp;
+		list.head = headTemp;
+		list.tail = tailTemp;
 
 	}
 	void Resize(SizeType size)
@@ -266,9 +267,9 @@ public:
 
 		List<T>::Iterator iter = static_cast<List::Iterator>(*_head);
 
-		while (iter._GetNode()->_GetNextNode() != End()._GetNode())
+		while (iter.getNode()->getNextNode() != End().getNode())
 		{
-			if (iter._GetNode()->_GetValue() == val)
+			if (iter.getNode()->getValue() == val)
 			{
 				Erase(iter);
 				iter++;
@@ -281,11 +282,11 @@ public:
 	{
 		if (Empty()) return;
 
-		List<T>::Iterator iter = static_cast<List<T>::Iterator>(*_head);
+		List<T>::Iterator iter = static_cast<List<T>::Iterator>(*head);
 
-		while (iter._GetNode() != End()._GetNode())
+		while (iter.getNode() != End().getNode())
 		{
-			if (compare(iter._GetNode()->_GetValue()))
+			if (compare(iter.getNode()->getValue()))
 			{
 				Erase(iter);
 				iter++;
@@ -299,16 +300,16 @@ public:
 		if (Empty()) return;
 
 		List<T>::Iterator iter1 = Begin();
-		List<T>::Iterator iter2 = static_cast<List<T>::Iterator>(*Begin()._GetNode()->_GetNextNode());
+		List<T>::Iterator iter2 = static_cast<List<T>::Iterator>(*Begin().getNode()->getNextNode());
 
-		while (iter1 != *End()._GetNode() && iter2 != *End()._GetNode())
+		while (iter1 != *End().getNode() && iter2 != *End().getNode())
 		{
-			if (iter2._GetNode() == End()._GetNode())
+			if (iter2.getNode() == End().getNode())
 			{
 				iter1++;
 				iter2 = iter1++;
 			}
-			if (iter1._GetNode()->_GetValue() == iter2._GetNode()->_GetValue())
+			if (iter1.getNode()->getValue() == iter2.getNode()->getValue())
 			{
 				Erase(iter2);
 				iter2++;
@@ -336,8 +337,8 @@ public:
 
 		for (List<T>::SizeType i = 0; i < length; i++)
 		{
-			tempArray[i] = iter._GetNode()->_GetValue();
-			iter = static_cast<List<T>::Iterator>(*iter._GetNode()->_GetNextNode());
+			tempArray[i] = iter.getNode()->getValue();
+			iter = static_cast<List<T>::Iterator>(*iter.getNode()->getNextNode());
 		}
 
 		int minPos = 0;
@@ -351,7 +352,7 @@ public:
 				if (tempArray[i] < tempArray[minPos])	minPos = i;
 			}
 
-			_swap(tempArray[minPos], tempArray[insertPos]);
+			swap(tempArray[minPos], tempArray[insertPos]);
 			insertPos++;
 		}
 
@@ -376,3 +377,4 @@ public:
 		}
 	}
 };
+#endif //_LIST_H_

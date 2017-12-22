@@ -1,11 +1,12 @@
-#pragma once
+#ifndef _STACK_H_
+#define _STACK_H_
 #include"Node.h"
 
 template<class T>
 class Stack
 {
 private:
-	Node<T> *_top;
+	Node<T> *top;
 
 public:
 	typedef T ValueType;
@@ -14,19 +15,19 @@ public:
 	typedef size_t SizeType;
 
 public:
-	Stack() :_top(nullptr) {}
-	Stack(const Stack<T>& stack):_top(nullptr)
+	Stack() :top(nullptr) {}
+	Stack(const Stack<T>& stack) :top(nullptr)
 	{
-		Node<T>* cur = stack._top;
+		Node<T>* cur = stack.top;
 		Stack<T>::SizeType copySize = stack.Size();
 
 		Stack<T>::ValueType* copyArray = static_cast<Stack<T>::ValueType*>(new Stack<T>::ValueType[copySize]);
 
 		for (Stack<T>::SizeType i = copySize - 1; i >= 0; i--)
 		{
-			copyArray[i] = cur->_GetValue();
-			if (!i) break;
-			cur = cur->_GetNextNode();
+			copyArray[i] = cur->getValue();
+			if (i == 0) break;
+			cur = cur->getNextNode();
 		}
 
 		for (Stack<T>::SizeType i = 0; i < copySize; i++)
@@ -40,16 +41,16 @@ public:
 	void operator=(const Stack<T>& stack)
 	{
 		while (!Empty()) { Pop(); }
-		Node<T>* cur = stack._top;
+		Node<T>* cur = stack.top;
 
 		Stack<T>::SizeType copySize = stack.Size();
 		Stack<T>::ValueType* newArray = static_cast<Stack<T>::ValueType*>(new Stack<T>::ValueType[copySize]);
 
 		for (Stack<T>::SizeType i = copySize - 1; i >= 0; i--)
 		{
-			newArray[i] = cur->_GetValue();
-			if (!i) break;
-			cur = cur->_GetNextNode();
+			newArray[i] = cur->getValue();
+			if (i == 0) break;
+			cur = cur->getNextNode();
 		}
 
 		for (Stack<T>::SizeType i = 0; i < copySize; i++)
@@ -58,75 +59,77 @@ public:
 		delete[] newArray;
 	}
 
-	bool Empty() const { return _top == nullptr; }
-	
+	bool Empty() const { return top == nullptr; }
+
 	SizeType Size() const
 	{
 		if (Empty()) return 0;
-		Node<T>* cur = _top;
+		Node<T>* cur = top;
 		Stack<T>::SizeType count = 0;
 
 		while (cur != nullptr)
 		{
 			count++;
-			cur = cur->_GetNextNode();
+			cur = cur->getNextNode();
 		}
 		return count;
 	}
-	
-	Reference Top() { return _top->_GetAddr(); }
-	
+
+	Reference Top() { return top->getAddr(); }
+
 	void Push(ValueType val)
 	{
 		if (Empty())
 		{
 			Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
-			newNode->_SetValue(val);
-			_top = newNode;
+			newNode->setValue(val);
+			top = newNode;
 			return;
 		}
 		Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
-		newNode->_SetValue(val);
-		_top->_SetNextNode(newNode);
-		newNode->_SetPrevNode(_top);
-		_top = newNode;
+		newNode->setValue(val);
+		top->setNextNode(newNode);
+		newNode->setPrevNode(top);
+		top = newNode;
 	}
-	
+
 	void Emplace(ValueType val)
 	{
 		if (Empty())
 		{
 			Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
-			newNode->_SetValue(val);
-			_top = newNode;
+			newNode->setValue(val);
+			top = newNode;
 			return;
 		}
 		Node<T>* newNode = static_cast<Node<T>*>(new Node<T>());
-		newNode->_SetValue(val);
-		_top->_SetNextNode(newNode);
-		newNode->_SetPrevNode(_top);
-		_top = newNode;
+		newNode->setValue(val);
+		top->setNextNode(newNode);
+		newNode->setPrevNode(_top);
+		top = newNode;
 	}
-	
+
 	void Pop()
 	{
 		if (Empty()) return;
-		if (_top->_GetNextNode() == nullptr)
+		if (top->getNextNode() == nullptr)
 		{
-			delete(_top);
-			_top = nullptr;
+			delete(top);
+			top = nullptr;
 			return;
 		}
-		Node<T>* temp = _top;
-		_top = _top->_GetNextNode();
-		temp->_SetPrevNode(nullptr);
+		Node<T>* temp = top;
+		top = top->getNextNode();
+		temp->setPrevNode(nullptr);
 		delete temp;
 	}
-	
+
 	void Swap(Stack<T> &stack)
 	{
-		Node<T>* temp = _top;
-		_top = stack._top;
-		stack._top = temp;
+		Node<T>* temp = top;
+		top = stack.top;
+		stack.top = temp;
 	}
 };
+
+#endif // !_STACK_H_
