@@ -1,8 +1,6 @@
 #ifndef _NODE_H_
 #define _NODE_H_
-
 #include <memory>
-#include "Node.h"
 
 template<class T>
 class Queue;
@@ -24,8 +22,8 @@ private:
 	~Node() {}
 	ValueType getValue() const { return value; }
 	ValueType& getAddr() { return value; }
-	Node<T>* getNextNode() const { return prevNode; }
-	Node<T>* getPrevNode() const { return nextNode; }
+	Node<T>* getNextNode() const { return nextNode; }
+	Node<T>* getPrevNode() const { return prevNode; }
 	void setValue(ValueType value) { this->value = value; }
 	void setPrevNode(const Node<T>* ptr) { prevNode = const_cast<Node<T>*>(ptr); }
 	void setNextNode(const Node<T>* ptr) { nextNode = const_cast<Node<T>*>(ptr); }

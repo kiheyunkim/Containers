@@ -1,58 +1,60 @@
-#pragma once
-#pragma once
+#ifndef _REVERSEITERATOR_H_
+#define _REVERSEITERATOR_H_
+
 #include<iostream>
 #include"Node.h"
 template<typename T>
 class ReverseIterator
 {
 private:
-	Node<T> *_target;
+	Node<T> *target;
 
 public:
 	typedef T ValueType;
 
 public:
-	Node<T>* _GetNode() { return _target; }
+	Node<T>* getNode() { return target; }
+
 public:
-	ReverseIterator() :_target(nullptr) {}
-	ReverseIterator(const Node<T>& node) { _target = const_cast<Node<T>*>(&node); }
-	ReverseIterator(const ReverseIterator<T>&  reverseIterator) : _target(reverseIterator._target) {}
+	ReverseIterator() :target(nullptr) {}
+	ReverseIterator(const Node<T>& node) { target = const_cast<Node<T>*>(&node); }
+	ReverseIterator(const ReverseIterator<T>& reverseIterator) : target(reverseIterator.target) {}
 	~ReverseIterator() {}
 
 	ReverseIterator<T>& operator++()
 	{
-		_target = _target->_GetPrevNode();
+		target = target->getPrevNode();
 		return *this;
 	}
 
 	ReverseIterator<T>& operator--()
 	{
-		_target = _target->_GetNextNode();
+		target = target->getNextNode();
 		return *this;
 	}
 
 	ReverseIterator<T>& operator+=(int count)
 	{
 		for (int i = 0; i < count; i++)
-			_target = _target->_GetPrevNode();
+			target = target->getPrevNode();
 		return *this;
 	}
 
 	ReverseIterator<T>& operator-=(int count)
 	{
 		for (int i = 0; i < count; i++)
-			_target = _target->_GetNextNode();
+			target = target->getNextNode();
 		return *this;
 	}
 
-	void operator=(ReverseIterator<T> iter) { _target = iter._GetNode(); }
-	bool operator==(ReverseIterator<T> iter) const { return _target == iter._GetNode(); }
-	bool operator!=(ReverseIterator<T> iter) const { return _target != iter._GetNode(); }
-	ValueType& operator*() const { return _target->_GetAddr(); }
+	void operator=(ReverseIterator<T> iter) { target = iter.getNode(); }
+	bool operator==(ReverseIterator<T> iter) const { return target == iter.getNode(); }
+	bool operator!=(ReverseIterator<T> iter) const { return target != iter.getNode(); }
+	ValueType& operator*() const { return target->getAddr(); }
 
 	friend std::ostream& operator<<(std::ostream& os, const ReverseIterator& iter)
 	{
-		ReverseIterator::ValueType value = iter._target->_GetValue();
+		ReverseIterator::ValueType value = iter.target->getValue();
 		os << value;
 		return os;
 	}
@@ -61,7 +63,9 @@ public:
 	{
 		ReverseIterator::ValueType value;
 		is >> value;
-		iter._target->_SetValue(value);
+		iter.target->setValue(value);
 		return is;
 	}
 };
+
+#endif // !_REVERSEITERATOR_H_
