@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "List", "List\List.vcxproj", "{9B22EB91-6F29-48F8-BA15-A0FD1D83A1C1}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Stack", "Stack\Stack.vcxproj", "{2FD4EFDC-C9ED-48FD-8EDB-502111192674}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Deque", "Deque\Deque.vcxproj", "{6B96FFA9-D05B-4797-B0AC-43F5F7DBBFC4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Map", "Map\Map.vcxproj", "{8666D077-1881-4350-A7A4-966A29215BAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,8 +63,19 @@ Global
 		{6B96FFA9-D05B-4797-B0AC-43F5F7DBBFC4}.Release|x64.Build.0 = Release|x64
 		{6B96FFA9-D05B-4797-B0AC-43F5F7DBBFC4}.Release|x86.ActiveCfg = Release|Win32
 		{6B96FFA9-D05B-4797-B0AC-43F5F7DBBFC4}.Release|x86.Build.0 = Release|Win32
+		{8666D077-1881-4350-A7A4-966A29215BAF}.Debug|x64.ActiveCfg = Debug|x64
+		{8666D077-1881-4350-A7A4-966A29215BAF}.Debug|x64.Build.0 = Debug|x64
+		{8666D077-1881-4350-A7A4-966A29215BAF}.Debug|x86.ActiveCfg = Debug|Win32
+		{8666D077-1881-4350-A7A4-966A29215BAF}.Debug|x86.Build.0 = Debug|Win32
+		{8666D077-1881-4350-A7A4-966A29215BAF}.Release|x64.ActiveCfg = Release|x64
+		{8666D077-1881-4350-A7A4-966A29215BAF}.Release|x64.Build.0 = Release|x64
+		{8666D077-1881-4350-A7A4-966A29215BAF}.Release|x86.ActiveCfg = Release|Win32
+		{8666D077-1881-4350-A7A4-966A29215BAF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1A96AF3-C219-494A-8A25-53B762F48A8C}
 	EndGlobalSection
 EndGlobal
