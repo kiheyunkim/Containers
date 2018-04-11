@@ -671,11 +671,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kihey\\Documents\\Visual Studio 2017\\Projects\\ConsoleApp2\\ConsoleApp2\\ConsoleApp2.csproj",
-      "projectName": "ConsoleApp2",
-      "projectPath": "C:\\Users\\kihey\\Documents\\Visual Studio 2017\\Projects\\ConsoleApp2\\ConsoleApp2\\ConsoleApp2.csproj",
+      "projectUniqueName": "C:\\Users\\kihey\\Documents\\Visual Studio 2017\\Projects\\List\\List\\List.csproj",
+      "projectName": "List",
+      "projectPath": "C:\\Users\\kihey\\Documents\\Visual Studio 2017\\Projects\\List\\List\\List.csproj",
       "packagesPath": "C:\\Users\\kihey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kihey\\Documents\\Visual Studio 2017\\Projects\\ConsoleApp2\\ConsoleApp2\\obj\\",
+      "outputPath": "C:\\Users\\kihey\\Documents\\Visual Studio 2017\\Projects\\List\\List\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
