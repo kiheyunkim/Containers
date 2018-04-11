@@ -15,7 +15,6 @@ public:
 		second = right->second;
 	}
 
-
 	void swap(Pair<First, Second>& right)
 	{
 		First tempFirst = right.first;
@@ -27,7 +26,6 @@ public:
 		first = tempFirst;
 		second = tempSecond;
 	}
-
 };
 
 #endif
