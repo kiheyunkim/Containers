@@ -17,14 +17,14 @@ public class BumsList<E extends Object> {
     /**
      * head of list capacity
      */
-    private BumsListElement elStart;
+    private BumsListElement<E> elStart;
 
     /**
      * default constructor
      * create instance of head of list capacity
      */
     public BumsList(){
-        elStart = new BumsListElement(null, 0);
+        elStart = new BumsListElement<>(null, 0);
     }
 
     /**
@@ -39,7 +39,7 @@ public class BumsList<E extends Object> {
         try{
             while(now.getElement() != null){
                 if(now.getNext() == null){
-                    now.setNext(new BumsListElement(now, capacity));
+                    now.setNext(new BumsListElement<E>(now, capacity));
                     capacity += 1;
                 }
                 now = now.getNext();

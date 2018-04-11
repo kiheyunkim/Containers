@@ -3,11 +3,11 @@ package bums;
 /**
  * this class is used by bums.BumsList for list's element
  */
-public class BumsListElement {
+public class BumsListElement<E extends Object> {
     /**
      * field for data
      */
-    private Object element;
+    private E element;
     /**
      * next object
      */
@@ -44,11 +44,11 @@ public class BumsListElement {
         this.pre = pre;
     }
 
-    public Object getElement() {
+    public E getElement() {
         return element;
     }
 
-    public void setElement(Object element) {
+    public void setElement(E element) {
         this.element = element;
     }
 
