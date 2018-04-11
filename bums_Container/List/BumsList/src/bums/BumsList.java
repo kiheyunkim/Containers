@@ -92,4 +92,50 @@ public class BumsList {
     public String toString() {
         return elStart.toString("");
     }
+
+    /**
+     * get element of list by index
+     * @param index element's index
+     * @return saved data that is at the list of index
+     * @exception IndexOutOfBoundsException out of index
+     */
+    public Object get(int index){
+        if(index > length){
+            throw new IndexOutOfBoundsException();
+        }
+        BumsListElement now = elStart;
+        for(int i=0;i<index;i++){
+            now = now.getNext();
+            System.out.println(now.toString(""));
+        }
+        return now.getElement();
+    }
+
+    /**
+     * searching list element and return index. if it has not, return -1
+     * @param target search object
+     * @return index of searching object. if it has not, return -1
+     */
+    public int indexOf(Object target){
+        int result = -1;
+        BumsListElement now = elStart;
+        for(int i=0; i<length; i++){
+            if(now.getElement().equals(target)){
+                result = i;
+                break;
+            } else {
+                now = now.getNext();
+            }
+        }
+        return result;
+    }
+
+    /**
+     * return true if this list contains the specified element
+     * @param target searching element
+     * @return if it has, return true. if not, false
+     */
+    public boolean contains(Object target){
+        return indexOf(target) >= 0;
+    }
 }
