@@ -9,7 +9,7 @@ public class Test {
     static public void main(String[] args){
 
         // make instance
-        BumsList list = new BumsList();
+        BumsList<Integer> list = new BumsList<>();
 
         // add elements
         list.add(123);

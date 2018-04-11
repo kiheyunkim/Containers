@@ -3,7 +3,7 @@ package bums;
 /**
  * this class is similar to list(linked list)
  */
-public class BumsList {
+public class BumsList<E extends Object> {
     /**
      * size of elements
      */
@@ -32,7 +32,7 @@ public class BumsList {
      * @param element object for addition
      * @return success or failure
      */
-    public boolean add(Object element){
+    public boolean add(E element){
         boolean result = true;
         BumsListElement now = elStart;
 
@@ -57,7 +57,7 @@ public class BumsList {
      * @param index element index to remove
      * @return removed element
      */
-    public Object remove(int index){
+    public E remove(int index){
         BumsListElement now = elStart;
 
         if(index < 0 || index > length){
@@ -81,7 +81,7 @@ public class BumsList {
             return null;
         }
 
-        return now.getElement();
+        return (E)now.getElement();
     }
 
     /**
@@ -99,7 +99,7 @@ public class BumsList {
      * @return saved data that is at the list of index
      * @exception IndexOutOfBoundsException out of index
      */
-    public Object get(int index){
+    public E get(int index){
         if(index > length){
             throw new IndexOutOfBoundsException();
         }
@@ -108,7 +108,7 @@ public class BumsList {
             now = now.getNext();
             System.out.println(now.toString(""));
         }
-        return now.getElement();
+        return (E)now.getElement();
     }
 
     /**
@@ -116,7 +116,7 @@ public class BumsList {
      * @param target search object
      * @return index of searching object. if it has not, return -1
      */
-    public int indexOf(Object target){
+    public int indexOf(E target){
         int result = -1;
         BumsListElement now = elStart;
         for(int i=0; i<length; i++){
@@ -135,7 +135,7 @@ public class BumsList {
      * @param target searching element
      * @return if it has, return true. if not, false
      */
-    public boolean contains(Object target){
+    public boolean contains(E target){
         return indexOf(target) >= 0;
     }
 }
