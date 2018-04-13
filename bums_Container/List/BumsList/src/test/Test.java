@@ -12,8 +12,8 @@ public class Test {
         BumsList<Integer> list = new BumsList<>();
 
         // add elements
-        list.add(123);
-        list.add(456);
+        System.out.println(list.add(123));
+        System.out.println(list.add(456));
 
         // test
         System.out.println(list.toString());
@@ -22,5 +22,6 @@ public class Test {
         System.out.println(list.indexOf(456));
         System.out.println(list.remove(0));
         System.out.println(list.toString());
+        System.out.println(list.size());
     }
 }

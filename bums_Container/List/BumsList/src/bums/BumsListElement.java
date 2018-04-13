@@ -3,7 +3,7 @@ package bums;
 /**
  * this class is used by bums.BumsList for list's element
  */
-public class BumsListElement<E extends Object> {
+class BumsListElement<E> {
     /**
      * field for data
      */
@@ -11,11 +11,11 @@ public class BumsListElement<E extends Object> {
     /**
      * next object
      */
-    private BumsListElement next;
+    private BumsListElement<E> next;
     /**
      * parent object
      */
-    private BumsListElement pre;
+    private BumsListElement<E> pre;
     /**
      * data index
      */
@@ -26,12 +26,12 @@ public class BumsListElement<E extends Object> {
      * @param pre parent object
      * @param index element(data) index
      */
-    public BumsListElement(BumsListElement pre, int index){
+    BumsListElement(BumsListElement<E> pre, int index){
         this.pre = pre;
         this.index = index;
     }
 
-    public String toString(String str) {
+    String toString(String str) {
         str += "{index=" + index + ", element=" + element.toString() + "}";
         if(next != null){
             str = next.toString(str);
@@ -40,27 +40,27 @@ public class BumsListElement<E extends Object> {
     }
 
     // getter and setters
-    public void setPre(BumsListElement pre) {
+    void setPre(BumsListElement<E> pre) {
         this.pre = pre;
     }
 
-    public E getElement() {
+    E getElement() {
         return element;
     }
 
-    public void setElement(E element) {
+    void setElement(E element) {
         this.element = element;
     }
 
-    public BumsListElement getNext() {
+    BumsListElement<E> getNext() {
         return next;
     }
 
-    public void setNext(BumsListElement next) {
+    void setNext(BumsListElement<E> next) {
         this.next = next;
     }
 
-    public BumsListElement getPre() {
+    BumsListElement<E> getPre() {
         return pre;
     }
 

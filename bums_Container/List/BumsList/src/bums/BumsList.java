@@ -3,7 +3,7 @@ package bums;
 /**
  * this class is similar to list(linked list)
  */
-public class BumsList<E extends Object> {
+public class BumsList<E> {
     /**
      * size of elements
      */
@@ -34,12 +34,12 @@ public class BumsList<E extends Object> {
      */
     public boolean add(E element){
         boolean result = true;
-        BumsListElement now = elStart;
+        BumsListElement<E> now = elStart;
 
         try{
             while(now.getElement() != null){
                 if(now.getNext() == null){
-                    now.setNext(new BumsListElement<E>(now, capacity));
+                    now.setNext(new BumsListElement<>(now, capacity));
                     capacity += 1;
                 }
                 now = now.getNext();
@@ -58,7 +58,7 @@ public class BumsList<E extends Object> {
      * @return removed element
      */
     public E remove(int index){
-        BumsListElement now = elStart;
+        BumsListElement<E> now = elStart;
 
         if(index < 0 || index > length){
             return null;
@@ -81,7 +81,7 @@ public class BumsList<E extends Object> {
             return null;
         }
 
-        return (E)now.getElement();
+        return now.getElement();
     }
 
     /**
@@ -103,12 +103,12 @@ public class BumsList<E extends Object> {
         if(index > length){
             throw new IndexOutOfBoundsException();
         }
-        BumsListElement now = elStart;
+        BumsListElement<E> now = elStart;
         for(int i=0;i<index;i++){
             now = now.getNext();
             System.out.println(now.toString(""));
         }
-        return (E)now.getElement();
+        return now.getElement();
     }
 
     /**
@@ -137,5 +137,13 @@ public class BumsList<E extends Object> {
      */
     public boolean contains(E target){
         return indexOf(target) >= 0;
+    }
+
+    /**
+     * return count of data
+     * @return count of data
+     */
+    public int size() {
+        return length;
     }
 }
